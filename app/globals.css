@@ -3,6 +3,7 @@
 @import 'shadcn/tailwind.css';
 @import '../config/theme.css';
 @import '../config/typography.css';
+@import './automart.css';
 
 @plugin '@tailwindcss/typography';
 

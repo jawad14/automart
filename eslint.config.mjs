@@ -43,6 +43,12 @@ const eslintConfig = defineConfig([
     files: ['app/global-error.tsx', 'components/ui/typography.tsx', 'components/seo/**/*.{ts,tsx}'],
     rules: { 'no-restricted-syntax': 'off' },
   },
+  // Automart blocks own their typography via app/automart.css — display-font sizing
+  // and per-section copy don't map onto the generic primitives.
+  {
+    files: ['components/blocks/automart/**/*.{ts,tsx}'],
+    rules: { 'no-restricted-syntax': 'off' },
+  },
   globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
 ]);
 

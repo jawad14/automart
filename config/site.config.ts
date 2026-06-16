@@ -12,6 +12,12 @@ export type SiteConfig = {
   ogImage: string;
   locale: string;
   author: { name: string; url?: string };
+  phone: string;
+  phoneTel: string;
+  phoneHref: string;
+  email: string;
+  hours: string;
+  address: { line1: string; line2: string };
   nav: NavItem[];
   social: SocialLink[];
   providers: {
@@ -30,21 +36,34 @@ export type SiteConfig = {
 };
 
 export const siteConfig: SiteConfig = {
-  name: 'Website Template',
-  shortName: 'Template',
+  name: 'Automart Nationwide',
+  shortName: 'Automart',
   description:
-    'A reusable, static-first Next.js website template. Edit this in config/site.config.ts per fork.',
-  url: 'https://example.com',
+    "Chicago's wholesale auto body & collision parts supplier. OEM-comparable bumpers, headlights, fenders, mirrors. Twice-daily delivery across Chicagoland.",
+  url: 'https://automartnationwide.com',
   ogImage: '/opengraph-image',
   locale: 'en_US',
-  author: { name: 'Your Brand', url: 'https://example.com' },
+  author: { name: 'Automart Nationwide Inc', url: 'https://automartnationwide.com' },
+  phone: '(773) 762-1000',
+  phoneTel: '17737621000',
+  phoneHref: 'tel:17737621000',
+  email: 'info@automartnationwide.com',
+  hours: 'Mon–Fri 8–6 · Sat 8–3 CST',
+  address: { line1: '160–150 25th Ave', line2: 'Melrose Park, IL 60160' },
   nav: [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Services', href: '/services' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Shop All Parts', href: '#categories' },
+    { label: 'Automotive Paints', href: '#categories' },
+    { label: 'Same-Day Delivery', href: '#shops' },
+    { label: 'Returns & Warranty', href: '#quote' },
+    { label: 'Reviews', href: '#reviews' },
+    { label: 'Careers', href: '#account' },
   ],
-  social: [],
+  social: [
+    { label: 'Facebook', href: '#' },
+    { label: 'Instagram', href: '#' },
+    { label: 'LinkedIn', href: '#' },
+    { label: 'YouTube', href: '#' },
+  ],
   providers: {
     logger: 'console',
     analytics: 'none',
@@ -62,7 +81,10 @@ export const siteConfig: SiteConfig = {
 
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: { default: siteConfig.name, template: `%s · ${siteConfig.name}` },
+  title: {
+    default: 'Automart Nationwide — Wholesale Collision Parts · Chicago',
+    template: `%s · ${siteConfig.name}`,
+  },
   description: siteConfig.description,
   applicationName: siteConfig.name,
   authors: [{ name: siteConfig.author.name, url: siteConfig.author.url }],

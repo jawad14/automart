@@ -254,8 +254,10 @@ body:has(.am-page) {
 .am-nav {
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 22px;
   margin-left: 8px;
+  flex-wrap: nowrap;
+  min-width: 0;
 }
 .am-nav a {
   font-size: 14.5px;
@@ -263,6 +265,7 @@ body:has(.am-page) {
   color: rgba(255, 255, 255, 0.92);
   position: relative;
   padding: 6px 0;
+  white-space: nowrap;
 }
 .am-nav a::after {
   content: '';
@@ -287,22 +290,25 @@ body:has(.am-page) {
   gap: 14px;
 }
 .am-header-phone {
-  display: flex;
+  display: none;
   flex-direction: column;
   line-height: 1.1;
   text-align: right;
   margin-right: 2px;
+  white-space: nowrap;
 }
 .am-header-phone small {
   font-size: 11px;
   color: rgba(255, 255, 255, 0.78);
   font-weight: 500;
+  white-space: nowrap;
 }
 .am-header-phone b {
   font-family: var(--am-display);
   font-size: 18px;
   color: #fff;
   font-weight: 700;
+  white-space: nowrap;
 }
 .am-burger {
   display: none;
@@ -319,8 +325,7 @@ body:has(.am-page) {
   color: #fff;
 }
 @media (max-width: 1080px) {
-  .am-nav,
-  .am-header-phone {
+  .am-nav {
     display: none;
   }
   .am-burger {
@@ -1453,5 +1458,219 @@ body:has(.am-page) {
   .am-reveal.in {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ===========================================================
+   Mobile-first responsive polish — aligned to standard
+   Tailwind breakpoints (sm 640, md 768, lg 1024, xl 1280).
+   Targets small-screen issues (overflow, cramped layout)
+   without disrupting the existing tuned desktop breakpoints.
+   =========================================================== */
+
+/* universal overflow guard — prevents accidental horizontal scroll */
+.am-page {
+  overflow-x: hidden;
+}
+
+/* ---------- tablet and below (< md, 768px) ---------- */
+@media (max-width: 768px) {
+  .am-section {
+    padding-block: clamp(48px, 9vw, 80px);
+  }
+
+  /* hero — tighter spacing, allow long CTAs to wrap */
+  .am-hero .am-wrap {
+    padding-block: clamp(40px, 9vw, 72px);
+  }
+  .am-hero-cta {
+    gap: 10px;
+  }
+  .am-hero-cta .am-btn {
+    white-space: normal;
+    text-align: center;
+  }
+  .am-hero-stats {
+    gap: 20px 28px;
+    margin-top: 32px;
+  }
+  .am-hero-stats .am-st b {
+    font-size: 24px;
+  }
+
+  /* marquee — smaller items on mobile */
+  .am-marquee .am-track {
+    gap: 32px;
+  }
+  .am-marquee .am-mi {
+    font-size: 17px;
+  }
+
+  /* split-cta cards stack with reduced inner padding */
+  .am-split-card .am-scta .am-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ---------- small phones (< sm, 640px) ---------- */
+@media (max-width: 640px) {
+  /* topbar — single line, tighter */
+  .am-topbar {
+    font-size: 12px;
+  }
+  .am-topbar .am-wrap {
+    gap: 10px;
+    min-height: 38px;
+  }
+  .am-tb-left {
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  /* header — hide the "Request a quote" button so logo + phone + burger fit */
+  .am-header .am-wrap {
+    gap: 12px;
+    min-height: 68px;
+  }
+  .am-header-actions {
+    gap: 8px;
+  }
+  .am-header-actions > .am-btn {
+    display: none;
+  }
+  .am-brand img,
+  .am-logo-header {
+    max-height: 36px;
+  }
+
+  /* drawer panel — full-width on tiny phones, less inner padding */
+  .am-drawer-panel {
+    width: min(92vw, 360px);
+    padding: 20px;
+  }
+
+  /* hero — full-width CTAs stack cleanly */
+  .am-hero h1 {
+    font-size: clamp(30px, 8vw, 44px);
+  }
+  .am-hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .am-hero-cta .am-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 15px;
+    padding: 14px 18px;
+  }
+  .am-hero-stats {
+    gap: 16px 22px;
+  }
+  .am-hero-stats .am-vline {
+    display: none;
+  }
+
+  /* finder — keep 3-up but tighten */
+  .am-finder {
+    padding: 18px;
+    border-radius: 14px;
+  }
+  .am-finder .am-grid3 {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* section heads — slightly smaller minimum */
+  .am-sec-head h2,
+  .am-why h2,
+  .am-quote h2,
+  .am-rev-head h2 {
+    font-size: clamp(24px, 6.5vw, 32px);
+  }
+  .am-sec-head p,
+  .am-why .am-wlede,
+  .am-quote .am-qlede {
+    font-size: 15px;
+  }
+
+  /* category footer buttons stack */
+  .am-cat-foot {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .am-cat-foot .am-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* why-us CTAs full width */
+  .am-why .am-wcta .am-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* quote — smaller call-to-call number, tighter form */
+  .am-qcall a {
+    font-size: 24px;
+  }
+  .am-form {
+    padding: 22px;
+    border-radius: 14px;
+  }
+
+  /* reviews — slightly tighter cards */
+  .am-rev {
+    padding: 22px;
+  }
+
+  /* footer — bottom row stacks */
+  .am-fbot {
+    justify-content: center;
+    text-align: center;
+  }
+  .am-fbot .am-chips {
+    justify-content: center;
+  }
+}
+
+/* ---------- extra-small phones (< 380px) ---------- */
+@media (max-width: 380px) {
+  .am-wrap {
+    padding-inline: 16px;
+  }
+  .am-topbar .am-tb-left {
+    font-size: 11.5px;
+    gap: 12px;
+  }
+  .am-brand img,
+  .am-logo-header {
+    max-height: 32px;
+  }
+  .am-burger {
+    width: 40px;
+    height: 40px;
+  }
+  .am-hero h1 {
+    font-size: clamp(26px, 8.5vw, 36px);
+  }
+  .am-hero-stats .am-st b {
+    font-size: 22px;
+  }
+  .am-marquee .am-mi {
+    font-size: 15px;
+  }
+}
+
+/* ensure tap targets remain ≥ 44px on coarse pointers */
+@media (pointer: coarse) {
+  .am-btn {
+    min-height: 44px;
+  }
+  .am-nav a,
+  .am-drawer-panel .am-dlink {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
 }

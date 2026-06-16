@@ -25,7 +25,11 @@ export function Toast() {
   }, []);
 
   return (
-    <div className={`am-toast${show ? 'show' : ''}`} role="status" aria-live="polite">
+    <div
+      className={['am-toast', show && 'show'].filter(Boolean).join(' ')}
+      role="status"
+      aria-live="polite"
+    >
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="m5 13 4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
       </svg>

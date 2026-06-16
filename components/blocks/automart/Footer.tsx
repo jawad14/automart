@@ -41,9 +41,9 @@ export function Footer() {
             <Image
               src="/automart/automart-white.png"
               alt={siteConfig.name}
-              width={180}
-              height={38}
-              style={{ height: 38, width: 'auto' }}
+              width={380}
+              height={80}
+              className="am-logo am-logo-footer"
             />
             <p>
               {siteConfig.name} — supplying collision repair shops, mechanics and drivers with

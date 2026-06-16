@@ -26,16 +26,16 @@ export function Header() {
 
   return (
     <>
-      <header className={`am-header${scrolled ? 'scrolled' : ''}`}>
+      <header className={['am-header', scrolled && 'scrolled'].filter(Boolean).join(' ')}>
         <div className="am-wrap">
           <a className="am-brand" href="#" aria-label={`${siteConfig.name} home`}>
             <Image
               src="/automart/automart-white.png"
               alt={siteConfig.name}
-              width={180}
-              height={42}
+              width={420}
+              height={98}
               priority
-              style={{ height: 42, width: 'auto' }}
+              className="am-logo am-logo-header"
             />
           </a>
           <nav className="am-nav">
@@ -67,16 +67,16 @@ export function Header() {
         </div>
       </header>
 
-      <div className={`am-drawer${open ? 'open' : ''}`}>
+      <div className={['am-drawer', open && 'open'].filter(Boolean).join(' ')}>
         <div className="am-drawer-scrim" onClick={close} />
         <div className="am-drawer-panel">
           <div className="am-dh">
             <Image
               src="/automart/automart-red.png"
               alt="Automart"
-              width={140}
-              height={34}
-              style={{ height: 34, width: 'auto' }}
+              width={320}
+              height={78}
+              className="am-logo am-logo-drawer"
             />
             <button type="button" className="am-dclose" onClick={close} aria-label="Close menu">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

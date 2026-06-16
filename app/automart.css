@@ -153,6 +153,25 @@ body:has(.am-page) {
   font-size: 16px;
 }
 
+/* ---------- logos (next/image: keep intrinsic ratio via auto, size via CSS) ---------- */
+.am-logo {
+  width: auto;
+  height: auto;
+}
+.am-logo-header {
+  max-height: 42px;
+}
+.am-logo-drawer {
+  max-height: 34px;
+}
+.am-logo-footer {
+  max-height: 38px;
+  margin-bottom: 18px;
+}
+.am-footer .am-fbrand img {
+  margin-bottom: 0;
+}
+
 /* ---------- top bar ---------- */
 .am-topbar {
   background: var(--am-black);

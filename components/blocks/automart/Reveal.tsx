@@ -29,7 +29,7 @@ export function Reveal({ children, className }: { children: ReactNode; className
   }, []);
 
   return (
-    <div ref={ref} className={`am-reveal${inView ? 'in' : ''}${className ? ` ${className}` : ''}`}>
+    <div ref={ref} className={['am-reveal', inView && 'in', className].filter(Boolean).join(' ')}>
       {children}
     </div>
   );

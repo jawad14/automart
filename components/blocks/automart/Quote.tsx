@@ -33,6 +33,7 @@ const requiredKeys: (keyof FormState)[] = ['name', 'phone', 'year', 'mkmodel', '
 const emailRe = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
 export function Quote() {
+  const { quote } = siteConfig.content;
   const [values, setValues] = useState<FormState>(initial);
   const [errors, setErrors] = useState<Record<string, boolean>>({});
   const [submitted, setSubmitted] = useState(false);
@@ -71,36 +72,23 @@ export function Quote() {
       <div className="am-wrap">
         <Reveal>
           <div className="am-quote-intro">
-            <span className="am-eyebrow">Request a quote</span>
-            <h2>Tell us the vehicle &amp; the damage. We&apos;ll quote your best price.</h2>
-            <p className="am-qlede">
-              No checkout, no sign-up. Send us the year, make, model and what you&apos;re looking
-              for — a real specialist will text or call back, usually within minutes.
-            </p>
+            <span className="am-eyebrow">{quote.eyebrow}</span>
+            <h2>{quote.headline}</h2>
+            <p className="am-qlede">{quote.lede}</p>
             <div className="am-qbadges">
-              <div className="am-qbadge">
-                <span className="am-qb">
-                  <Check />
-                </span>
-                Price-match guarantee
-              </div>
-              <div className="am-qbadge">
-                <span className="am-qb">
-                  <Check />
-                </span>
-                Twice-daily delivery
-              </div>
-              <div className="am-qbadge">
-                <span className="am-qb">
-                  <Check />
-                </span>
-                Real specialists, no scripts
-              </div>
+              {quote.badges.map((b) => (
+                <div className="am-qbadge" key={b}>
+                  <span className="am-qb">
+                    <Check />
+                  </span>
+                  {b}
+                </div>
+              ))}
             </div>
             <div className="am-qcall">
-              <small>Or call us directly</small>
+              <small>{quote.callLabel}</small>
               <a href={siteConfig.phoneHref}>{siteConfig.phone}</a>
-              <p>Mon–Fri 8 AM – 7 PM CST · Sat 9 – 4</p>
+              <p>{quote.callHoursLine}</p>
             </div>
           </div>
         </Reveal>
@@ -114,14 +102,14 @@ export function Quote() {
                     <path d="m5 13 4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <h3>Thanks{firstName ? `, ${firstName}` : ''} — request received.</h3>
+                <h3>
+                  {firstName
+                    ? quote.successHeadline.replace('Thanks', `Thanks, ${firstName}`)
+                    : quote.successHeadline}
+                </h3>
                 <p>
-                  A real parts specialist will text or call you back, usually within minutes. Need
-                  it now? Call{' '}
-                  <a
-                    href={siteConfig.phoneHref}
-                    style={{ color: 'var(--am-red)', fontWeight: 600 }}
-                  >
+                  {quote.successBody}{' '}
+                  <a className="am-success-link" href={siteConfig.phoneHref}>
                     {siteConfig.phone}
                   </a>
                   .
@@ -158,16 +146,7 @@ export function Quote() {
               </div>
               <div className="am-fg">
                 <label htmlFor="q-email">
-                  Email{' '}
-                  <span
-                    style={{
-                      textTransform: 'none',
-                      fontWeight: 500,
-                      color: 'var(--am-muted-2)',
-                    }}
-                  >
-                    (optional)
-                  </span>
+                  Email <span className="am-label-optional">(optional)</span>
                 </label>
                 <input
                   id="q-email"
@@ -219,9 +198,7 @@ export function Quote() {
               <button className="am-btn am-btn-red am-btn-lg" type="submit">
                 Send quote request
               </button>
-              <p className="am-fnote">
-                We&apos;ll only use your info to respond to this request. No spam, ever.
-              </p>
+              <p className="am-fnote">{quote.formNote}</p>
             </form>
           )}
         </Reveal>

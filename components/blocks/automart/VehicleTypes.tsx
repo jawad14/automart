@@ -4,13 +4,14 @@ import { VehicleIcon } from '@/lib/automart/icons';
 import { Reveal } from './Reveal';
 
 export function VehicleTypes() {
+  const { vehicleTypesHead } = siteConfig.content;
   return (
     <section className="am-section" id="vehicles">
       <div className="am-wrap">
         <Reveal>
           <div className="am-sec-head">
-            <span className="am-eyebrow">Shop by vehicle type</span>
-            <h2>Find parts faster.</h2>
+            <span className="am-eyebrow">{vehicleTypesHead.eyebrow}</span>
+            <h2>{vehicleTypesHead.headline}</h2>
           </div>
         </Reveal>
         <div className="am-vt-grid">

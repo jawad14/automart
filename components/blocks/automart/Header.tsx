@@ -30,10 +30,10 @@ export function Header() {
         <div className="am-wrap">
           <a className="am-brand" href="#" aria-label={`${siteConfig.name} home`}>
             <Image
-              src="/automart/automart-white.png"
+              src={siteConfig.brand.logoLight}
               alt={siteConfig.name}
-              width={420}
-              height={98}
+              width={siteConfig.brand.logoWidth}
+              height={siteConfig.brand.logoHeight}
               priority
               className="am-logo am-logo-header"
             />
@@ -72,10 +72,10 @@ export function Header() {
         <div className="am-drawer-panel">
           <div className="am-dh">
             <Image
-              src="/automart/automart-red.png"
-              alt="Automart"
-              width={320}
-              height={78}
+              src={siteConfig.brand.logoDark}
+              alt={siteConfig.name}
+              width={Math.round(siteConfig.brand.logoWidth * 0.76)}
+              height={Math.round(siteConfig.brand.logoHeight * 0.8)}
               className="am-logo am-logo-drawer"
             />
             <button type="button" className="am-dclose" onClick={close} aria-label="Close menu">

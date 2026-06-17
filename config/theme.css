@@ -1,4 +1,41 @@
+/* ===========================================================
+   Brand theme tokens — the ONLY file a fork edits to rebrand.
+   Colors, fonts, max-width, radii, shadows for the automart blocks.
+   Section-specific CSS in app/automart.css consumes these.
+   =========================================================== */
 :root {
+  /* ---- brand palette ---- */
+  --am-red: #e4002b;
+  --am-red-dark: #c1001f;
+  --am-red-ink: #9c0019;
+  --am-yellow: #ffcc00;
+  --am-yellow-2: #ffd83a;
+  --am-yellow-deep: #f4b400;
+  --am-maroon: #7c0a28;
+  --am-red-grad-h: linear-gradient(100deg, #240607 0%, #5e0e13 38%, #a51a23 74%, #c5202b 100%);
+
+  /* ---- neutrals ---- */
+  --am-black: #161616;
+  --am-ink: #1a1a1a;
+  --am-paper: #ffffff;
+  --am-mist: #f4f4f5;
+  --am-mist-2: #ececef;
+  --am-line: #e4e4e8;
+  --am-muted: #5c5c64;
+  --am-muted-2: #8c8c95;
+
+  /* ---- typography (font CSS vars come from next/font in app/layout.tsx) ---- */
+  --am-display: var(--font-display), 'Century Gothic', -apple-system, 'Segoe UI', sans-serif;
+  --am-body: var(--font-sans), -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* ---- layout + shape ---- */
+  --am-maxw: 1240px;
+  --am-pad: clamp(20px, 5vw, 56px);
+  --am-r: 14px;
+  --am-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.05);
+  --am-shadow: 0 18px 50px -18px rgba(0, 0, 0, 0.4);
+
+  /* ---- shadcn / tailwind tokens below ---- */
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);

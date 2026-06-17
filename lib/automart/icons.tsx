@@ -1,6 +1,47 @@
+import type { ValueIconKey } from '@/config/site.config';
 import type { CategoryKey, VehicleTypeKey } from './data';
 
 const sw = 1.7;
+
+export function ValueIcon({ k }: { k: ValueIconKey }) {
+  switch (k) {
+    case 'shield':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+          <path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4z" strokeLinejoin="round" />
+          <path d="m9 12 2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case 'truck':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+          <path d="M1 3h13v10H1z" />
+          <path d="M14 7h4l3 3v3h-7" strokeLinejoin="round" />
+          <circle cx="5.5" cy="16.5" r="2" />
+          <circle cx="17.5" cy="16.5" r="2" />
+        </svg>
+      );
+    case 'headset':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+          <path d="M3 18v-6a9 9 0 0 1 18 0v6" strokeLinecap="round" />
+          <path
+            d="M21 19a2 2 0 0 1-2 2h-1v-7h1a2 2 0 0 1 2 2zM3 19a2 2 0 0 0 2 2h1v-7H5a2 2 0 0 0-2 2z"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case 'badge':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+          <circle cx="12" cy="8" r="6" />
+          <path d="m8.5 13.5-1.5 8 5-3 5 3-1.5-8" strokeLinejoin="round" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
 
 export function CategoryIcon({ k }: { k: CategoryKey }) {
   switch (k) {

@@ -1,3 +1,4 @@
+import { siteConfig } from '@/config/site.config';
 import { reviews } from '@/lib/automart/data';
 import { Reveal } from './Reveal';
 
@@ -8,17 +9,18 @@ const Star = () => (
 );
 
 export function Reviews() {
+  const { reviewsHead } = siteConfig.content;
   return (
     <section className="am-section" id="reviews">
       <div className="am-wrap">
         <Reveal>
           <div className="am-rev-head">
             <div>
-              <span className="am-eyebrow">Trusted by 14,000+ shops &amp; drivers</span>
-              <h2>What customers are saying.</h2>
+              <span className="am-eyebrow">{reviewsHead.eyebrow}</span>
+              <h2>{reviewsHead.headline}</h2>
             </div>
-            <a className="am-btn am-btn-ghost" href="#">
-              Read all reviews
+            <a className="am-btn am-btn-ghost" href={reviewsHead.seeAllHref}>
+              {reviewsHead.seeAllLabel}
             </a>
           </div>
         </Reveal>

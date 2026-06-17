@@ -33,23 +33,20 @@ const socialIcon: Record<string, ComponentType> = {
 };
 
 export function Footer() {
+  const { footer } = siteConfig.content;
   return (
     <footer className="am-footer">
       <div className="am-wrap">
         <div className="am-ftop">
           <div className="am-fbrand">
             <Image
-              src="/automart/automart-white.png"
+              src={siteConfig.brand.logoLight}
               alt={siteConfig.name}
-              width={380}
-              height={80}
+              width={siteConfig.brand.logoWidth}
+              height={siteConfig.brand.logoHeight}
               className="am-logo am-logo-footer"
             />
-            <p>
-              {siteConfig.name} — supplying collision repair shops, mechanics and drivers with
-              aftermarket / OEM-comparable quality parts at honest prices since 2001. 25 years of
-              trust, our own delivery fleet, and the industry&apos;s largest call center.
-            </p>
+            <p>{footer.brandTagline}</p>
             <div className="am-fsocial">
               {siteConfig.social.map((s) => {
                 const Icon = socialIcon[s.label];
@@ -61,55 +58,18 @@ export function Footer() {
               })}
             </div>
           </div>
-          <div className="am-fcol">
-            <h5>Shop</h5>
-            <ul>
-              <li>
-                <a href="#categories">Bumpers</a>
-              </li>
-              <li>
-                <a href="#categories">Headlights &amp; Tail Lights</a>
-              </li>
-              <li>
-                <a href="#categories">Fenders</a>
-              </li>
-              <li>
-                <a href="#categories">Mirrors</a>
-              </li>
-              <li>
-                <a href="#categories">Grilles</a>
-              </li>
-              <li>
-                <a href="#categories">Hoods &amp; Panels</a>
-              </li>
-              <li>
-                <a href="#categories">Automotive Paints</a>
-              </li>
-            </ul>
-          </div>
-          <div className="am-fcol">
-            <h5>How we work</h5>
-            <ul>
-              <li>
-                <a href={siteConfig.phoneHref}>Call to order</a>
-              </li>
-              <li>
-                <a href="#quote">Request a quote</a>
-              </li>
-              <li>
-                <a href="#shops">Same-day delivery</a>
-              </li>
-              <li>
-                <a href="#quote">Best price guarantee</a>
-              </li>
-              <li>
-                <a href="#quote">Returns &amp; warranty</a>
-              </li>
-              <li>
-                <a href="#quote">Visit our counter</a>
-              </li>
-            </ul>
-          </div>
+          {footer.columns.map((col) => (
+            <div className="am-fcol" key={col.title}>
+              <h5>{col.title}</h5>
+              <ul>
+                {col.links.map((l) => (
+                  <li key={l.label}>
+                    <a href={l.href}>{l.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
           <div className="am-fcol am-fcontact">
             <h5>Contact</h5>
             <p>
@@ -123,18 +83,19 @@ export function Footer() {
             <p>
               <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
             </p>
-            <p style={{ fontSize: 13 }}>{siteConfig.hours}</p>
+            <p className="am-fhours">{siteConfig.hours}</p>
           </div>
         </div>
         <div className="am-fbot">
           <span>
-            © {new Date().getFullYear()} {siteConfig.name} · Built on Trust. Driven by Value.
+            © {new Date().getFullYear()} {siteConfig.name} · {footer.legalTagline}
           </span>
           <div className="am-chips">
-            <span className="am-chip">EST. 2001</span>
-            <span className="am-chip">25 YRS</span>
-            <span className="am-chip">TWICE A DAY</span>
-            <span className="am-chip">BEST PRICE</span>
+            {footer.chips.map((c) => (
+              <span className="am-chip" key={c}>
+                {c}
+              </span>
+            ))}
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { siteConfig } from '@/config/site.config';
+import { btnClass } from '@/lib/automart/button';
 import { categories } from '@/lib/automart/data';
 import { CategoryIcon } from '@/lib/automart/icons';
 import { Reveal } from './Reveal';
@@ -10,17 +11,15 @@ const Arrow = () => (
 );
 
 export function Categories() {
+  const { categoriesHead } = siteConfig.content;
   return (
     <section className="am-section" id="categories">
       <div className="am-wrap">
         <Reveal>
           <div className="am-sec-head">
-            <span className="am-eyebrow">Shop by category</span>
-            <h2>The body shop&apos;s catalog — without the markup.</h2>
-            <p>
-              From front bumpers to heating &amp; cooling, we stock the high-turn collision parts
-              your shop needs — all priced for the long haul.
-            </p>
+            <span className="am-eyebrow">{categoriesHead.eyebrow}</span>
+            <h2>{categoriesHead.headline}</h2>
+            <p>{categoriesHead.lede}</p>
           </div>
         </Reveal>
         <div className="am-cat-grid">
@@ -39,12 +38,11 @@ export function Categories() {
           ))}
         </div>
         <div className="am-cat-foot">
-          <a className="am-btn am-btn-red am-btn-lg" href={siteConfig.phoneHref}>
-            Call to order
-          </a>
-          <a className="am-btn am-btn-ghost am-btn-lg" href="#quote">
-            Request a quote
-          </a>
+          {categoriesHead.ctas.map((cta) => (
+            <a key={cta.label} className={btnClass(cta.variant, 'lg')} href={cta.href}>
+              {cta.label}
+            </a>
+          ))}
         </div>
       </div>
     </section>

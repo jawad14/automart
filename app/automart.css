@@ -62,6 +62,167 @@ body:has(.am-page) {
 .am-section {
   padding-block: clamp(60px, 8vw, 108px);
 }
+.am-section-alt {
+  background: var(--am-mist);
+}
+.am-section-dark {
+  background: var(--am-black);
+  color: #fff;
+}
+.am-section-dark .am-sec-head h2 {
+  color: #fff;
+}
+.am-section-dark .am-sec-head p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* center variant for subpage section heads */
+.am-sec-head-center {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+.am-sec-head-center .am-cat-foot {
+  justify-content: center;
+}
+
+/* card grids sized for fewer items (3 / 4 per row) — avoid awkward gaps in 5-col cat-grid */
+.am-cards-3,
+.am-cards-4 {
+  display: grid;
+  gap: 18px;
+  margin-top: 42px;
+}
+.am-cards-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.am-cards-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.am-cards-3 > *,
+.am-cards-4 > * {
+  background: #fff;
+  border: 1px solid var(--am-line);
+  border-radius: var(--am-r);
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.am-section-alt .am-cards-3 > *,
+.am-section-alt .am-cards-4 > * {
+  border-color: transparent;
+  box-shadow: 0 2px 10px -8px rgba(0, 0, 0, 0.18);
+}
+.am-cards-3 > *:hover,
+.am-cards-4 > *:hover {
+  border-color: transparent;
+  box-shadow: var(--am-shadow);
+  transform: translateY(-3px);
+}
+.am-cards-3 > * h4,
+.am-cards-4 > * h4 {
+  font-family: var(--am-display);
+  font-size: 18px;
+  color: var(--am-ink);
+}
+.am-cards-3 > * p,
+.am-cards-4 > * p {
+  font-size: 14.5px;
+  color: var(--am-muted);
+  line-height: 1.55;
+}
+.am-cards-3 > * .am-stepnum,
+.am-cards-4 > * .am-stepnum {
+  font-family: var(--am-display);
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--am-red);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+@media (max-width: 1080px) {
+  .am-cards-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .am-cards-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .am-cards-3,
+  .am-cards-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- FAQ accordions ---------- */
+.am-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 38px;
+  max-width: 880px;
+  margin-inline: auto;
+}
+.am-faq {
+  background: #fff;
+  border: 1px solid var(--am-line);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: 0.2s;
+}
+.am-faq:hover {
+  border-color: var(--am-black);
+}
+.am-faq[open] {
+  border-color: var(--am-red);
+  box-shadow: 0 12px 30px -22px rgba(228, 0, 43, 0.4);
+}
+.am-faq summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 20px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  font-family: var(--am-display);
+  font-weight: 600;
+  font-size: 16.5px;
+  color: var(--am-ink);
+}
+.am-faq summary::-webkit-details-marker {
+  display: none;
+}
+.am-faq-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--am-mist);
+  color: var(--am-black);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1;
+  transition: 0.2s;
+  flex: 0 0 auto;
+}
+.am-faq[open] .am-faq-icon {
+  background: var(--am-red);
+  color: #fff;
+  transform: rotate(45deg);
+}
+.am-faq p {
+  padding: 0 22px 22px;
+  color: var(--am-muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
 
 /* ---------- buttons ---------- */
 .am-btn {
@@ -201,9 +362,120 @@ body:has(.am-page) {
   height: 15px;
   background: rgba(255, 255, 255, 0.22);
 }
+.am-tb-cta {
+  background: var(--am-yellow);
+  color: var(--am-black);
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  padding: 5px 12px;
+  border-radius: 100px;
+  opacity: 1 !important;
+  transition: 0.18s ease;
+}
+.am-tb-cta:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
 @media (max-width: 880px) {
   .am-tb-right {
     display: none;
+  }
+}
+
+/* ---------- subpage hero (used on /parts, /paints, /delivery, etc.) ---------- */
+.am-page-hero {
+  position: relative;
+  background: linear-gradient(115deg, #1f0506 0%, #560c11 40%, #971820 72%, #c5202b 100%);
+  color: #fff;
+  overflow: hidden;
+}
+.am-page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-conic-gradient(
+    from 0deg at 78% 18%,
+    rgba(255, 255, 255, 0.05) 0deg 3.2deg,
+    transparent 3.2deg 11deg
+  );
+  mask: radial-gradient(120% 120% at 78% 18%, #000 22%, transparent 78%);
+}
+.am-page-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(900px 620px at 22% -10%, rgba(255, 255, 255, 0.1), transparent 60%);
+}
+.am-page-hero .am-wrap {
+  position: relative;
+  z-index: 2;
+  padding-block: clamp(54px, 7vw, 96px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.am-page-hero .am-crumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 22px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.am-page-hero .am-crumb a {
+  color: rgba(255, 255, 255, 0.85);
+}
+.am-page-hero .am-crumb a:hover {
+  color: var(--am-yellow);
+}
+.am-page-hero .am-crumb-sep {
+  opacity: 0.5;
+}
+.am-page-hero .am-hero-eyebrow {
+  margin-bottom: 4px;
+}
+.am-page-hero h1 {
+  font-family: var(--am-display);
+  font-size: clamp(34px, 5.2vw, 60px);
+  margin: 18px 0 0;
+  letter-spacing: -0.02em;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.05;
+  max-width: 18ch;
+}
+.am-page-hero h1 .am-accent {
+  color: var(--am-yellow);
+}
+.am-page-hero .am-lede {
+  margin-top: 20px;
+  font-size: clamp(15.5px, 1.5vw, 18px);
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 60ch;
+  font-weight: 500;
+}
+.am-page-hero .am-ph-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-top: 30px;
+}
+@media (max-width: 720px) {
+  .am-page-hero h1 {
+    font-size: clamp(28px, 8vw, 42px);
+  }
+  .am-page-hero .am-ph-cta {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  .am-page-hero .am-ph-cta .am-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -238,7 +510,7 @@ body:has(.am-page) {
   display: flex;
   align-items: center;
   gap: 22px;
-  margin-left: 8px;
+  margin-left: auto;
   flex-wrap: nowrap;
   min-width: 0;
 }
@@ -267,7 +539,6 @@ body:has(.am-page) {
   width: 100%;
 }
 .am-header-actions {
-  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 14px;

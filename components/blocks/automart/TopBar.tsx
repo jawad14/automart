@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { siteConfig } from '@/config/site.config';
 
 export function TopBar() {
@@ -26,7 +27,9 @@ export function TopBar() {
           <span className="am-sep" />
           <span className="am-tb-muted">{topbar.deliveryLabel}</span>
           <span className="am-sep" />
-          <a href={topbar.accountHref}>{topbar.accountLabel}</a>
+          <Link className="am-tb-cta" href="/#quote">
+            Request a quote
+          </Link>
         </div>
       </div>
     </div>

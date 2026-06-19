@@ -114,8 +114,8 @@ export type SiteConfig = {
   content: ContentConfig;
 };
 
-const phone = '(773) 762-1000';
-const phoneHref = 'tel:17737621000';
+const phone = '(630) 628-1888';
+const phoneHref = 'tel:16306281888';
 
 export const siteConfig: SiteConfig = {
   name: 'Automart Nationwide',
@@ -127,11 +127,11 @@ export const siteConfig: SiteConfig = {
   locale: 'en_US',
   author: { name: 'Automart Nationwide Inc', url: 'https://automartnationwide.com' },
   phone,
-  phoneTel: '17737621000',
+  phoneTel: '16306281888',
   phoneHref,
   email: 'info@automartnationwide.com',
   hours: 'Mon–Fri 8–6 · Sat 8–3 CST',
-  address: { line1: '160–150 25th Ave', line2: 'Melrose Park, IL 60160' },
+  address: { line1: '1430 W Fullerton Ave', line2: 'Addison, IL 60101' },
   brand: {
     logoLight: '/automart/automart-white.png',
     logoDark: '/automart/automart-red.png',
@@ -139,12 +139,13 @@ export const siteConfig: SiteConfig = {
     logoHeight: 98,
   },
   nav: [
-    { label: 'Shop All Parts', href: '#categories' },
-    { label: 'Automotive Paints', href: '#categories' },
-    { label: 'Same-Day Delivery', href: '#shops' },
-    { label: 'Returns & Warranty', href: '#quote' },
-    { label: 'Reviews', href: '#reviews' },
-    { label: 'Careers', href: '#account' },
+    { label: 'Shop All Parts', href: '/parts' },
+    { label: 'Automotive Paints', href: '/paints' },
+    { label: 'Returns & Warranty', href: '/returns' },
+    { label: 'Same-Day Delivery', href: '/delivery' },
+    { label: 'FAQs', href: '/faq' },
+    { label: 'Careers', href: '/careers' },
+    { label: 'Register Account', href: '/register' },
   ],
   social: [
     { label: 'Facebook', href: '#' },
@@ -170,7 +171,7 @@ export const siteConfig: SiteConfig = {
       flagLabel: '★ 25 years supplying collision parts',
       deliveryLabel: 'Twice-daily local delivery',
       accountLabel: 'Register account',
-      accountHref: '#account',
+      accountHref: '/register',
     },
     hero: {
       eyebrow: 'Built on Trust. Driven by Value.',
@@ -284,7 +285,7 @@ export const siteConfig: SiteConfig = {
       lede: "No checkout, no sign-up. Send us the year, make, model and what you're looking for — a real specialist will text or call back, usually within minutes.",
       badges: ['Price-match guarantee', 'Twice-daily delivery', 'Real specialists, no scripts'],
       callLabel: 'Or call us directly',
-      callHoursLine: 'Mon–Fri 8 AM – 7 PM CST · Sat 9 – 4',
+      callHoursLine: 'Mon–Fri 8 AM – 6 PM CST · Sat 8 – 3',
       formNote: "We'll only use your info to respond to this request. No spam, ever.",
       successHeadline: 'Thanks — request received.',
       successBody:
@@ -315,6 +316,17 @@ export const siteConfig: SiteConfig = {
             { label: 'Best price guarantee', href: '#quote' },
             { label: 'Returns & warranty', href: '#quote' },
             { label: 'Visit our counter', href: '#quote' },
+          ],
+        },
+        {
+          title: 'Company',
+          links: [
+            { label: 'Our story', href: '#why' },
+            { label: 'Service area', href: '#shops' },
+            { label: 'Wholesale accounts', href: '#quote' },
+            { label: 'Careers', href: '#account' },
+            { label: 'FAQ', href: '#quote' },
+            { label: 'Reviews', href: '#reviews' },
           ],
         },
       ],

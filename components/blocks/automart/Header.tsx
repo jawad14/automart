@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { siteConfig } from '@/config/site.config';
 
@@ -28,7 +29,7 @@ export function Header() {
     <>
       <header className={['am-header', scrolled && 'scrolled'].filter(Boolean).join(' ')}>
         <div className="am-wrap">
-          <a className="am-brand" href="#" aria-label={`${siteConfig.name} home`}>
+          <Link className="am-brand" href="/" aria-label={`${siteConfig.name} home`}>
             <Image
               src={siteConfig.brand.logoLight}
               alt={siteConfig.name}
@@ -37,7 +38,7 @@ export function Header() {
               priority
               className="am-logo am-logo-header"
             />
-          </a>
+          </Link>
           <nav className="am-nav">
             {siteConfig.nav.map((item) => (
               <a key={item.label} href={item.href}>
@@ -49,9 +50,6 @@ export function Header() {
             <a className="am-header-phone" href={siteConfig.phoneHref}>
               <small>Call to order</small>
               <b>{siteConfig.phone}</b>
-            </a>
-            <a className="am-btn am-btn-yellow" href="#quote">
-              Request a quote
             </a>
             <button
               type="button"

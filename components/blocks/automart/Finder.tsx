@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import { makes, models } from '@/lib/automart/data';
 import { emitToast } from '@/lib/automart/toast';
+import { siteConfig } from '@/config/site.config';
 
 export function Finder() {
   const currentYear = new Date().getFullYear();
@@ -25,7 +26,7 @@ export function Finder() {
       return;
     }
     emitToast(
-      `Searching parts for ${parts.join(' ')} — a specialist can confirm fitment on (773) 762-1000.`,
+      `Searching parts for ${parts.join(' ')} — a specialist can confirm fitment on ${siteConfig.phone}.`,
     );
     document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -92,7 +93,7 @@ export function Finder() {
         Find parts
       </button>
       <p className="am-or">
-        Prefer to talk? <a href="tel:17737621000">Call a parts specialist →</a>
+        Prefer to talk? <a href={siteConfig.phoneHref}>Call a parts specialist →</a>
       </p>
     </div>
   );

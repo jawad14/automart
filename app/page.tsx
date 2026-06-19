@@ -42,9 +42,9 @@ export default function HomePage() {
           address: {
             '@type': 'PostalAddress',
             streetAddress: siteConfig.address.line1,
-            addressLocality: 'Melrose Park',
+            addressLocality: 'Addison',
             addressRegion: 'IL',
-            postalCode: '60160',
+            postalCode: '60101',
             addressCountry: 'US',
           },
         }}

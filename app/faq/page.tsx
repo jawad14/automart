@@ -41,7 +41,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: 'What is the warranty on the parts?',
-    a: 'All merchandise sold by Automart Nationwide is subject only to the manufacturer’s warranty and conditions, if any, and is subject to submission to the manufacturer for inspection and approval for repair or replacement of merchandise. All other accessories carry a 30-day warranty; light bulbs carry a 90-day warranty. No warranty whatsoever will be valid if the defect was caused by the customer’s abuse, negligence, or mishandling.',
+    a: 'All merchandise sold by Automart is subject only to the manufacturer’s warranty and conditions, if any, and is subject to submission to the manufacturer for inspection and approval for repair or replacement of merchandise. All other accessories carry a 30-day warranty; light bulbs carry a 90-day warranty. No warranty whatsoever will be valid if the defect was caused by the customer’s abuse, negligence, or mishandling.',
   },
   {
     q: 'Do the parts come with hardware like nuts, screws, bolts and brackets?',
@@ -63,7 +63,7 @@ export default function FaqPage() {
       <StillHaveQuestion
         eyebrow="Still have a question?"
         headline="Talk to a real parts specialist."
-        lede="Our desk in Addison, IL picks up on the first or second ring — Mon–Fri 8 AM – 6 PM and Sat 8 AM – 3 PM CST."
+        lede="Our desk in Melrose Park, IL picks up on the first or second ring — 8:00 AM – 6:00 PM CST."
         ctas={[
           { label: `Call ${siteConfig.phone}`, href: siteConfig.phoneHref, variant: 'yellow' },
           { label: 'Request a quote', href: '/#quote', variant: 'outline-w' },

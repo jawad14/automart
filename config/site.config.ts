@@ -114,24 +114,24 @@ export type SiteConfig = {
   content: ContentConfig;
 };
 
-const phone = '(630) 628-1888';
-const phoneHref = 'tel:16306281888';
+const phone = '(630) 812-2888';
+const phoneHref = 'tel:16308122888';
 
 export const siteConfig: SiteConfig = {
-  name: 'Automart Nationwide',
+  name: 'Automart',
   shortName: 'Automart',
   description:
-    "Chicago's wholesale auto body & collision parts supplier. OEM-comparable bumpers, headlights, fenders, mirrors. Twice-daily delivery across Chicagoland.",
-  url: 'https://automartnationwide.com',
+    "Chicago's wholesale auto body & collision parts supplier. OEM-comparable bumpers, headlights, fenders, mirrors. Same-day delivery across Chicagoland.",
+  url: 'https://www.automartparts.com',
   ogImage: '/opengraph-image',
   locale: 'en_US',
-  author: { name: 'Automart Nationwide Inc', url: 'https://automartnationwide.com' },
+  author: { name: 'Automart - Auto Body Supply', url: 'https://www.automartparts.com' },
   phone,
-  phoneTel: '16306281888',
+  phoneTel: '16308122888',
   phoneHref,
-  email: 'info@automartnationwide.com',
-  hours: 'Mon–Fri 8–6 · Sat 8–3 CST',
-  address: { line1: '1430 W Fullerton Ave', line2: 'Addison, IL 60101' },
+  email: 'info@automartparts.com',
+  hours: '8:00 AM – 6:00 PM CST',
+  address: { line1: '160 25th Ave', line2: 'Melrose Park, IL 60160' },
   brand: {
     logoLight: '/automart/automart-white.png',
     logoDark: '/automart/automart-red.png',
@@ -148,10 +148,8 @@ export const siteConfig: SiteConfig = {
     { label: 'Register Account', href: '/register' },
   ],
   social: [
-    { label: 'Facebook', href: '#' },
-    { label: 'Instagram', href: '#' },
-    { label: 'LinkedIn', href: '#' },
-    { label: 'YouTube', href: '#' },
+    { label: 'Facebook', href: 'https://www.facebook.com/AutomartNW' },
+    { label: 'YouTube', href: 'https://www.youtube.com/channel/UCAD4HU0nHDEE34Lo11v_F-g' },
   ],
   providers: {
     logger: 'console',
@@ -293,7 +291,7 @@ export const siteConfig: SiteConfig = {
     },
     footer: {
       brandTagline:
-        'Automart Nationwide — supplying collision repair shops, mechanics and drivers with aftermarket / OEM-comparable quality parts at honest prices since 2001. 25 years of trust, our own delivery fleet, and the industry’s largest call center.',
+        'Automart — House of Aftermarket Auto Parts. Supplying collision repair shops, mechanics and drivers with aftermarket / OEM-comparable quality parts at honest prices, backed by our own delivery fleet and the industry’s largest call center.',
       columns: [
         {
           title: 'Shop',
@@ -339,7 +337,7 @@ export const siteConfig: SiteConfig = {
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: 'Automart Nationwide — Wholesale Collision Parts · Chicago',
+    default: 'Automart — Auto Body Supply · Melrose Park, IL',
     template: `%s · ${siteConfig.name}`,
   },
   description: siteConfig.description,

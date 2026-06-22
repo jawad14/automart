@@ -11,7 +11,7 @@ import { siteConfig } from '@/config/site.config';
 export const metadata: Metadata = {
   title: 'Returns & Warranty Policy',
   description:
-    'Return and exchange policy for auto body parts at Automart Nationwide. RMA required, restocking fees, manufacturer warranty, and specific part warranty details.',
+    'Return and exchange policy for auto body parts at Automart. RMA required, restocking fees, manufacturer warranty, and specific part warranty details.',
 };
 
 const cards: PolicyCard[] = [
@@ -60,7 +60,7 @@ const cards: PolicyCard[] = [
       'Defects resulting from customer abuse, negligence, or mishandling void all warranty coverage.',
       'The customer is responsible for all shipping costs associated with warranty claims.',
       'No labor costs or inconvenience claims are covered under any warranty.',
-      'Automart Nationwide is not responsible for any damages caused by a product.',
+      'Automart is not responsible for any damages caused by a product.',
       'We strongly recommend retaining original parts. Non-operational vehicles resulting from a warranty claim remain the customer’s responsibility.',
     ],
   },

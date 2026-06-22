@@ -12,7 +12,7 @@ import { siteConfig } from '@/config/site.config';
 export const metadata: Metadata = {
   title: 'Register a Business Account',
   description:
-    'Open a wholesale account with Automart Nationwide. Net-30 terms, dedicated specialists, account pricing on every order.',
+    'Open a wholesale account with Automart. Net-30 terms, dedicated specialists, account pricing on every order.',
 };
 
 const perks = [

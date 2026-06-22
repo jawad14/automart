@@ -21,7 +21,7 @@ const openings: Opening[] = [
     title: 'Warehouse Associate',
     department: 'Operations',
     type: 'Full-time',
-    location: 'Addison, IL',
+    location: 'Melrose Park, IL',
     description:
       'Pick, pack, and stage orders for our twice-daily delivery fleet. Keep inventory accurate and the warehouse organized so we can ship fast every single day.',
     requirements: [
@@ -51,7 +51,7 @@ const openings: Opening[] = [
     title: 'Customer Service Specialist',
     department: 'Customer Service',
     type: 'Full-time',
-    location: 'Addison, IL',
+    location: 'Melrose Park, IL',
     description:
       'Be the voice of Automart for our customers — resolving order issues, tracking deliveries, handling returns, and making sure every customer leaves satisfied.',
     requirements: [
@@ -66,7 +66,7 @@ const openings: Opening[] = [
     title: 'Parts Sales Representative',
     department: 'Sales',
     type: 'Full-time',
-    location: 'Addison, IL',
+    location: 'Melrose Park, IL',
     description:
       'Handle inbound calls and quotes from collision repair shops and independent mechanics. Match customers with the right OEM-comparable parts quickly and accurately.',
     requirements: [
@@ -81,9 +81,9 @@ const openings: Opening[] = [
     title: 'Counter Sales Associate',
     department: 'Sales',
     type: 'Full-time',
-    location: 'Addison, IL',
+    location: 'Melrose Park, IL',
     description:
-      'Serve walk-in customers at our Addison counter. Help mechanics and DIY customers find the right parts, process orders, and keep the counter running smoothly.',
+      'Serve walk-in customers at our Melrose Park counter. Help mechanics and DIY customers find the right parts, process orders, and keep the counter running smoothly.',
     requirements: [
       'Previous counter or retail sales experience',
       'Knowledge of auto parts or willingness to learn quickly',
@@ -139,7 +139,7 @@ export default function CareersPage() {
         headline="Current Openings"
         lede={
           <>
-            All positions are based at our Addison, IL headquarters or on Chicagoland delivery
+            All positions are based at our Melrose Park, IL headquarters or on Chicagoland delivery
             routes. Don’t see a fit? Email your résumé to{' '}
             <a className="am-success-link" href={mailto}>
               {siteConfig.email}

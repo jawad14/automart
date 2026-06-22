@@ -1,105 +1,159 @@
 import type { Metadata } from 'next';
-import { CardGrid } from '@/components/blocks/automart/CardGrid';
+import { Benefits, type Benefit } from '@/components/blocks/automart/Benefits';
 import { Footer } from '@/components/blocks/automart/Footer';
 import { Header } from '@/components/blocks/automart/Header';
-import { PageHero } from '@/components/blocks/automart/PageHero';
-import { SectionHeading } from '@/components/blocks/automart/SectionHeading';
+import { Openings, type Opening } from '@/components/blocks/automart/Openings';
+import { PageBanner } from '@/components/blocks/automart/PageBanner';
 import { Toast } from '@/components/blocks/automart/Toast';
 import { TopBar } from '@/components/blocks/automart/TopBar';
-import { Values } from '@/components/blocks/automart/Values';
-import { WhyList } from '@/components/blocks/automart/WhyList';
 import { siteConfig } from '@/config/site.config';
 
 export const metadata: Metadata = {
-  title: 'Careers — Build Something That Lasts',
+  title: 'Careers — Build Your Career at Automart',
   description:
-    'We’re a family-run, 25-year-old parts business that grew the old-fashioned way: real people answering the phone. If that sounds like work you’d be proud of, talk to us.',
+    'Join a 25-year-old company that’s still growing. We’re looking for driven, customer-focused people to help us serve collision shops and drivers across Chicagoland.',
 };
 
-const openings = [
+const mailto = `mailto:${siteConfig.email}`;
+
+const openings: Opening[] = [
   {
-    title: 'Parts Specialist · Call Desk',
-    subtitle: 'Full-time · Addison, IL',
-    body: 'Pick up the phone, find the right part, beat the dealer’s price. Hands-on training, weekly cell-based shifts, real growth into senior desk roles.',
+    title: 'Warehouse Associate',
+    department: 'Operations',
+    type: 'Full-time',
+    location: 'Addison, IL',
+    description:
+      'Pick, pack, and stage orders for our twice-daily delivery fleet. Keep inventory accurate and the warehouse organized so we can ship fast every single day.',
+    requirements: [
+      'Ability to lift up to 75 lbs',
+      'Experience in a warehouse or distribution center preferred',
+      'Forklift certification a plus',
+      'Reliable and punctual — early shift starts at 6 AM',
+    ],
+    applyHref: `${mailto}?subject=Application:%20Warehouse%20Associate`,
   },
   {
-    title: 'Delivery Driver · Chicagoland Routes',
-    subtitle: 'Full-time · Addison, IL',
-    body: 'Run our morning and afternoon routes in company vehicles. Clean record, courteous on the dock, comfortable with shop customers.',
+    title: 'Delivery Driver',
+    department: 'Logistics',
+    type: 'Full-time',
+    location: 'Chicago Metro Area',
+    description:
+      'Drive our company fleet to deliver parts to collision shops and customers across the Chicago metro area. Twice-daily routes, company vehicle, and competitive pay.',
+    requirements: [
+      'Valid Illinois driver’s license with clean driving record',
+      'Familiarity with Chicago metro streets and suburbs',
+      'Ability to lift and carry auto parts (up to 75 lbs)',
+      'DOT medical card or willingness to obtain one',
+    ],
+    applyHref: `${mailto}?subject=Application:%20Delivery%20Driver`,
   },
   {
-    title: 'Warehouse Associate · Inbound/Outbound',
-    subtitle: 'Full-time · Addison, IL',
-    body: 'Receive inbound containers, pick orders for the trucks, keep the floor organized. Reach truck experience a plus.',
+    title: 'Customer Service Specialist',
+    department: 'Customer Service',
+    type: 'Full-time',
+    location: 'Addison, IL',
+    description:
+      'Be the voice of Automart for our customers — resolving order issues, tracking deliveries, handling returns, and making sure every customer leaves satisfied.',
+    requirements: [
+      '2+ years customer service experience',
+      'Calm under pressure with strong problem-solving skills',
+      'Proficiency with order management or CRM systems',
+      'Bilingual (English/Spanish) a plus',
+    ],
+    applyHref: `${mailto}?subject=Application:%20Customer%20Service%20Specialist`,
   },
   {
-    title: 'Paint Desk · Color Matching',
-    subtitle: 'Full-time · Addison, IL',
-    body: 'Camera-match colors, mix to spec, advise refinishers on system selection. Refinish or paint-counter background required.',
+    title: 'Parts Sales Representative',
+    department: 'Sales',
+    type: 'Full-time',
+    location: 'Addison, IL',
+    description:
+      'Handle inbound calls and quotes from collision repair shops and independent mechanics. Match customers with the right OEM-comparable parts quickly and accurately.',
+    requirements: [
+      'Experience in automotive parts sales or counter sales',
+      'Strong phone communication skills',
+      'Ability to work in a fast-paced call center environment',
+      'Basic knowledge of auto body or collision parts a plus',
+    ],
+    applyHref: `${mailto}?subject=Application:%20Parts%20Sales%20Representative`,
+  },
+  {
+    title: 'Counter Sales Associate',
+    department: 'Sales',
+    type: 'Full-time',
+    location: 'Addison, IL',
+    description:
+      'Serve walk-in customers at our Addison counter. Help mechanics and DIY customers find the right parts, process orders, and keep the counter running smoothly.',
+    requirements: [
+      'Previous counter or retail sales experience',
+      'Knowledge of auto parts or willingness to learn quickly',
+      'Strong interpersonal skills and customer-first attitude',
+      'Spanish language skills a plus',
+    ],
+    applyHref: `${mailto}?subject=Application:%20Counter%20Sales%20Associate`,
   },
 ];
 
-const why = [
+const benefits: Benefit[] = [
   {
-    n: 1,
-    title: 'Family-run since 2001',
-    body: 'No private-equity churn. Decisions are made on the floor, not in a quarterly board deck.',
+    iconKey: 'pay',
+    title: 'Competitive Pay',
+    desc: 'Market-rate wages plus performance bonuses for sales roles.',
   },
   {
-    n: 2,
-    title: 'Promote from within',
-    body: 'Most senior desk leads, route managers and buyers started here. We grow people up.',
+    iconKey: 'truck',
+    title: 'Company Vehicle',
+    desc: 'Delivery drivers get a fully maintained company vehicle.',
   },
   {
-    n: 3,
-    title: 'Real benefits',
-    body: 'Health, dental, vision, 401(k) match, PTO and paid holidays — all from day 91.',
+    iconKey: 'health',
+    title: 'Health Benefits',
+    desc: 'Medical, dental, and vision coverage for full-time employees.',
   },
   {
-    n: 4,
-    title: 'Stable hours',
-    body: 'Mon–Sat schedule, no Sundays. You’ll know when you’re working a month out.',
+    iconKey: 'growth',
+    title: 'Room to Grow',
+    desc: '25 years of growth — we promote from within whenever possible.',
   },
 ];
 
 export default function CareersPage() {
-  const mailto = `mailto:${siteConfig.email}`;
-  const openingsWithHref = openings.map((o) => ({ ...o, href: mailto }));
   return (
     <div className="am-page">
       <TopBar />
       <Header />
-      <PageHero
-        crumb="Careers"
-        eyebrow="Family-run since 2001"
-        headlineLead="Work somewhere that"
-        headlineAccent="picks up the phone."
-        lede="Twenty-five years in, we’re still growing because customers still call. If you like the idea of being on the other end of that line — solving problems, beating prices, shipping parts that fit — we’d like to hear from you."
-        ctas={[
-          { label: 'Email your résumé', href: mailto, variant: 'yellow' },
-          { label: 'Call to apply', href: siteConfig.phoneHref, variant: 'ghost-w' },
-        ]}
+      <PageBanner
+        eyebrow="We’re hiring"
+        headlineLead="Build Your Career at"
+        headlineAccent="Automart"
+        lede="Join a 25-year-old company that’s still growing. We’re looking for driven, customer-focused people to help us serve collision shops and drivers across the Chicago metro area."
+        image={{
+          src: '/automart/careers/careers-hero.webp',
+          alt: 'Automart team supplying collision shops and drivers',
+          width: 835,
+          height: 520,
+        }}
       />
-      <Values />
-      <section className="am-section am-section-alt">
-        <div className="am-wrap">
-          <SectionHeading
-            eyebrow="Open roles"
-            headline="We’re hiring."
-            lede="All positions are based at our Addison, IL warehouse and counter."
-          />
-          <CardGrid variant={4} items={openingsWithHref} />
-        </div>
-      </section>
-      <WhyList
+      <Openings
+        eyebrow="Now hiring"
+        headline="Current Openings"
+        lede={
+          <>
+            All positions are based at our Addison, IL headquarters or on Chicagoland delivery
+            routes. Don’t see a fit? Email your résumé to{' '}
+            <a className="am-success-link" href={mailto}>
+              {siteConfig.email}
+            </a>{' '}
+            and we’ll keep it on file.
+          </>
+        }
+        items={openings}
+      />
+      <Benefits
         eyebrow="Why Automart"
-        headline="What it’s like to work here."
-        lede="We grew the old-fashioned way — real people answering the phone, year after year. That culture is the job, and it’s why people stay."
-        ctas={[
-          { label: 'Email your résumé', href: mailto, variant: 'red' },
-          { label: 'Call to apply', href: siteConfig.phoneHref, variant: 'outline-w' },
-        ]}
-        reasons={why}
+        headline="Benefits that come with the job."
+        lede="Real benefits for real work — the kind people stay around for."
+        items={benefits}
       />
       <Footer />
       <Toast />

@@ -1,56 +1,240 @@
 import type { Metadata } from 'next';
-import { CardGrid } from '@/components/blocks/automart/CardGrid';
+import {
+  DeliveryRegional,
+  type RegionalCoverage,
+} from '@/components/blocks/automart/DeliveryRegional';
+import { DeliveryRules, type DeliveryRule } from '@/components/blocks/automart/DeliveryRules';
+import { DeliveryStats, type DeliveryStat } from '@/components/blocks/automart/DeliveryStats';
+import { DeliveryZones, type DeliveryZone } from '@/components/blocks/automart/DeliveryZones';
 import { Footer } from '@/components/blocks/automart/Footer';
 import { Header } from '@/components/blocks/automart/Header';
-import { Marquee } from '@/components/blocks/automart/Marquee';
-import { PageHero } from '@/components/blocks/automart/PageHero';
-import { Quote } from '@/components/blocks/automart/Quote';
-import { Reviews } from '@/components/blocks/automart/Reviews';
-import { SectionHeading } from '@/components/blocks/automart/SectionHeading';
-import { SplitCta } from '@/components/blocks/automart/SplitCta';
+import { PageBanner } from '@/components/blocks/automart/PageBanner';
+import { StillHaveQuestion } from '@/components/blocks/automart/StillHaveQuestion';
 import { Toast } from '@/components/blocks/automart/Toast';
 import { TopBar } from '@/components/blocks/automart/TopBar';
-import { Values } from '@/components/blocks/automart/Values';
 import { siteConfig } from '@/config/site.config';
 
 export const metadata: Metadata = {
-  title: 'Same-Day Delivery — Our Own Fleet Across Chicagoland',
+  title: 'Same-Day Parts Delivery — Our Own Fleet Across Chicagoland',
   description:
-    'Our own trucks, our own drivers, two runs a day. Order a part this morning and have it on your bench by afternoon — across Chicagoland and surrounding metros.',
+    'Our own branded delivery fleet runs twice-daily routes across the Chicago metro and into surrounding states. Same-day delivery to local shops, no third-party carriers.',
 };
 
-const points = [
+const stats: DeliveryStat[] = [
+  { value: '2× Daily', label: 'Local delivery runs' },
+  { value: 'Same Day', label: 'Metro-area orders' },
+  { value: '5 States', label: 'Regional coverage' },
+  { value: '25 Yrs', label: 'Serving the industry' },
+];
+
+const zones: DeliveryZone[] = [
   {
-    title: 'Two routes a day',
-    body: 'A morning run and an afternoon run hit the same metros — so a part ordered before noon is on your bench by close of business.',
+    label: 'Zone 1 — Immediate Local',
+    cadence: 'Twice Daily',
+    cutoff: 'AM: 8:30 · PM: 12:30',
+    accent: 'var(--am-red)',
+    areas: [
+      'Addison',
+      'Bensenville',
+      'Wood Dale',
+      'Elmhurst',
+      'Villa Park',
+      'Lombard',
+      'Itasca',
+      'Roselle',
+      'Bloomingdale',
+      'Glendale Heights',
+      'Carol Stream',
+      'Glen Ellyn',
+    ],
   },
   {
-    title: 'Our own drivers',
-    body: 'No third-party couriers. Our team handles every box from the shelf to your dock — fewer handoffs, fewer damaged panels.',
+    label: 'Zone 2 — Chicago & Inner Suburbs',
+    cadence: 'Twice Daily',
+    cutoff: 'AM: 8:30 · PM: 12:30',
+    accent: '#0d4faf',
+    areas: [
+      'Chicago (all neighborhoods)',
+      'Oak Park',
+      'Berwyn',
+      'Cicero',
+      'Evanston',
+      'Skokie',
+      'Lincolnwood',
+      'Niles',
+      'Rosemont',
+      'Schiller Park',
+      'Des Plaines',
+    ],
   },
   {
-    title: 'Local first',
-    body: 'Chicagoland and the surrounding metro are core. Outside the zone? We ship next-day freight with shop-friendly LTL rates.',
-  },
-  {
-    title: 'Will-call welcome',
-    body: 'Stop by the counter in Addison and grab the part on the way back to the shop. No wait, no minimum.',
+    label: 'Zone 3 — Extended Metro',
+    cadence: 'Same Day',
+    cutoff: 'Order by 8:45 AM',
+    accent: '#0ea5e9',
+    areas: [
+      'Palatine',
+      'Arlington Heights',
+      'Schaumburg',
+      'Elgin',
+      'Aurora',
+      'Naperville',
+      'Bolingbrook',
+      'Joliet',
+      'Orland Park',
+      'Tinley Park',
+      'Homewood',
+      'Harvey',
+      'Calumet City',
+      'Melrose Park',
+      'Franklin Park',
+      'River Grove',
+    ],
   },
 ];
 
-const zones = [
-  'Chicago (city)',
-  'Cicero · Berwyn',
-  'Oak Park · Maywood',
-  'Melrose Park · Bellwood',
-  'Elmhurst · Addison',
-  'Bensenville · Wood Dale',
-  'Schaumburg · Hoffman Estates',
-  'Naperville · Aurora',
-  'Joliet · Bolingbrook',
-  'Tinley Park · Orland Park',
-  'Skokie · Evanston',
-  'Niles · Park Ridge',
+const regional: RegionalCoverage[] = [
+  {
+    state: 'Illinois',
+    coverage: 'Chicago & Surrounding Suburbs',
+    time: 'Twice a Day',
+    cities: [
+      'Chicago',
+      'Addison',
+      'Oak Park',
+      'Evanston',
+      'Skokie',
+      'Cicero',
+      'Berwyn',
+      'Wilmette',
+      'Niles',
+      'Schiller Park',
+    ],
+  },
+  {
+    state: 'Indiana',
+    coverage: 'Northwest & Central IN',
+    time: 'Same Day / Next Day',
+    cities: [
+      'Whiting',
+      'East Chicago',
+      'Hammond',
+      'Gary',
+      'Dyer',
+      'Highland',
+      'Griffith',
+      'Schererville',
+      'Merrillville',
+    ],
+  },
+  {
+    state: 'Wisconsin',
+    coverage: 'Southeast WI',
+    time: 'Next Business Day',
+    cities: [
+      'Kenosha',
+      'Racine',
+      'Elkhorn',
+      'Milwaukee',
+      'Waukesha',
+      'Cudahy',
+      'Brookfield',
+      'Franklin',
+      'Big Bend',
+    ],
+  },
+  {
+    state: 'Iowa',
+    coverage: 'Eastern IA',
+    time: '1–2 Business Days',
+    cities: [
+      'Silvis',
+      'Moline',
+      'Davenport',
+      'Muscatine',
+      'West Liberty',
+      'Iowa City',
+      'Cedar Rapids',
+      'Des Moines',
+      'Marshalltown',
+      'Perry',
+      'Adel',
+      'Polk City',
+      'Urbandale',
+      'Indianola',
+      'Newton',
+    ],
+  },
+  {
+    state: 'Indiana (Extended)',
+    coverage: 'Central & South IN',
+    time: '1 Business Day',
+    cities: [
+      'South Bend',
+      'Elkhart',
+      'Lafayette',
+      'Frankfort',
+      'Lebanon',
+      'Indianapolis',
+      'Carmel',
+      'Fishers',
+      'Lawrence',
+      'Beech Grove',
+      'Greenwood',
+      'Plainfield',
+      'Brownsburg',
+      'Avon',
+      'Valparaiso',
+      'Michigan City',
+      'La Porte',
+      'Knox',
+      'Plymouth',
+    ],
+  },
+  {
+    state: 'Illinois (South)',
+    coverage: 'Central & South IL',
+    time: 'Mon & Thu — Twice a Week',
+    cities: [
+      'Pontiac',
+      'Peoria',
+      'Morton',
+      'Bloomington',
+      'Farmer City',
+      'Champaign',
+      'Urbana',
+      'Rantoul',
+      'Paxton',
+      'Chatsworth',
+      'Onarga',
+      'Kankakee',
+      'Monee',
+      'Rankin',
+    ],
+  },
+];
+
+const rules: DeliveryRule[] = [
+  {
+    title: 'Order Cutoff Times',
+    body: 'Zone 1 and Zone 2 run twice daily — AM route cutoff is 8:30 AM, PM route cutoff is 12:30 PM. Zone 3 same-day cutoff is 8:45 AM. Orders placed after cutoff are scheduled for the next available route.',
+  },
+  {
+    title: 'Signature & Receiving',
+    body: 'A signature is required upon delivery for all orders over $500. Please ensure someone is available to receive and inspect parts at the time of delivery. Damages must be reported immediately.',
+  },
+  {
+    title: 'Refused or Missed Deliveries',
+    body: 'Refused deliveries are subject to a 25% restocking fee plus return freight charges. If our driver cannot reach you, we will call ahead — a second attempt may incur a redelivery fee.',
+  },
+  {
+    title: 'Scheduling & Route Changes',
+    body: 'Need to schedule a specific delivery window? Call our dispatch team by 9:00 AM and we will do our best to accommodate. Route changes after dispatch may not always be possible.',
+  },
+  {
+    title: 'Damaged or Incorrect Parts',
+    body: 'Inspect all parts before signing. Report damage or incorrect items immediately — do not install or modify the part. We will issue an RMA and arrange a replacement at no cost to you.',
+  },
 ];
 
 export default function DeliveryPage() {
@@ -58,48 +242,41 @@ export default function DeliveryPage() {
     <div className="am-page">
       <TopBar />
       <Header />
-      <PageHero
-        crumb="Same-Day Delivery"
-        eyebrow="Twice-daily local routes"
-        headlineLead="Order by phone."
-        headlineAccent="On your bench by close."
-        lede="The job doesn’t wait — neither do we. Twice a day, our own trucks fan out across Chicagoland so the part you need to finish a job today gets there today."
+      <PageBanner
+        eyebrow="Our Fleet"
+        headlineLead="Fast, Reliable Parts"
+        headlineAccent="Delivery"
+        lede="Our own branded delivery fleet runs daily routes across the Chicago metro area and into surrounding states. Same-day delivery to local shops — no third-party carriers, no excuses."
+        image={{
+          src: '/automart/delivery-truck.webp',
+          alt: 'Automart Nationwide delivery truck',
+          width: 835,
+          height: 520,
+        }}
+      />
+      <DeliveryStats items={stats} />
+      <DeliveryZones
+        eyebrow="Chicago Metro"
+        headline="Local Delivery Zones & Times"
+        lede="We run multiple routes daily. The earlier you order, the faster we deliver."
+        items={zones}
+      />
+      <DeliveryRegional
+        eyebrow="Beyond Illinois"
+        headline="Regional State Coverage"
+        lede="We ship to 5 surrounding states. Call to confirm coverage for your specific location."
+        items={regional}
+      />
+      <DeliveryRules eyebrow="Policies" headline="Delivery Rules & Policies" items={rules} />
+      <StillHaveQuestion
+        eyebrow="Ready to order?"
+        headline="Call now and we’ll dispatch today."
+        lede="Our dispatch team is standing by. Tell us what you need and your location — we’ll confirm your delivery window on the spot."
         ctas={[
-          { label: 'Call to order', href: siteConfig.phoneHref, variant: 'yellow' },
-          { label: 'See if you’re in zone', href: '/#quote', variant: 'ghost-w' },
+          { label: `Call ${siteConfig.phone}`, href: siteConfig.phoneHref, variant: 'yellow' },
+          { label: 'Request a quote', href: '/#quote', variant: 'outline-w' },
         ]}
       />
-      <Values />
-      <Marquee />
-      <section className="am-section am-section-alt">
-        <div className="am-wrap">
-          <SectionHeading
-            eyebrow="How it works"
-            headline="Built to keep shops moving."
-            lede="Our delivery network is designed around how body shops actually work — fast in zone, transparent outside it."
-          />
-          <CardGrid variant={4} items={points} />
-        </div>
-      </section>
-      <section className="am-section">
-        <div className="am-wrap">
-          <SectionHeading
-            eyebrow="Coverage"
-            headline="Where we run."
-            lede="A sample of our daily routes — odds are we’re already passing your shop. Call the desk to confirm timing for your zip."
-          />
-          <div className="am-vt-grid">
-            {zones.map((z) => (
-              <div className="am-vt" key={z}>
-                <b>{z}</b>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <SplitCta />
-      <Reviews />
-      <Quote />
       <Footer />
       <Toast />
     </div>

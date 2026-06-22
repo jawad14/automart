@@ -1,55 +1,51 @@
 import type { Metadata } from 'next';
+import { FaqLinear } from '@/components/blocks/automart/FaqLinear';
 import { Footer } from '@/components/blocks/automart/Footer';
-import { FaqList } from '@/components/blocks/automart/FaqList';
 import { Header } from '@/components/blocks/automart/Header';
-import { Marquee } from '@/components/blocks/automart/Marquee';
-import { PageHero } from '@/components/blocks/automart/PageHero';
-import { Quote } from '@/components/blocks/automart/Quote';
-import { Reviews } from '@/components/blocks/automart/Reviews';
-import { SplitCta } from '@/components/blocks/automart/SplitCta';
+import { PageBanner } from '@/components/blocks/automart/PageBanner';
+import { StillHaveQuestion } from '@/components/blocks/automart/StillHaveQuestion';
 import { Toast } from '@/components/blocks/automart/Toast';
 import { TopBar } from '@/components/blocks/automart/TopBar';
-import { Values } from '@/components/blocks/automart/Values';
 import { siteConfig } from '@/config/site.config';
 
 export const metadata: Metadata = {
   title: 'Frequently Asked Questions',
   description:
-    'Pricing, fitment, delivery windows, paint matching, account setup — the questions shops and drivers ask us most, answered straight.',
+    'Answers to the questions most people have about our parts, certifications, warranties, and ordering process.',
 };
 
 const faqs: { q: string; a: string }[] = [
   {
-    q: 'How do I order? Is there an online checkout?',
-    a: 'No checkout, no sign-up. Call the desk on (630) 628-1888 and a real specialist will confirm fitment, lock in pricing, and queue the part for the next delivery run. You can also request a quote online and we’ll text or call back, usually within minutes.',
+    q: 'What are Aftermarket Parts?',
+    a: 'Aftermarket parts are the parts of a vehicle available in the market and used as replacements for the original parts of a vehicle.',
   },
   {
-    q: 'Do you really match prices?',
-    a: 'Yes — show us a written quote for a comparable part from any legitimate supplier and we’ll beat it. Same fair price every time, no haggling on subsequent orders.',
+    q: 'What is OEM?',
+    a: 'Original Equipment Manufacturer (OEM) parts are those components of a vehicle that were used during its original construction and assembly by the manufacturer. These parts are not necessarily manufactured by the car builder but are used in its original assembly.',
   },
   {
-    q: 'Are your parts OEM?',
-    a: 'We carry both aftermarket and OEM-comparable parts. Quality lines are selected to bolt up and finish like factory, and we’ll always tell you what you’re getting before you commit.',
+    q: 'What is meant by CAPA Certified Parts?',
+    a: 'The Certified Automotive Parts Association (CAPA) was established in the public interest in 1987 to set up and oversee a testing program to assure the suitability and quality of automotive replacement parts. CAPA Certification is even recognized by government regulators as an assurance of quality.',
   },
   {
-    q: 'How fast can I get a part?',
-    a: 'In zone (Chicagoland and surrounding metros), most orders go out on the same day’s morning or afternoon run. Outside the zone we ship next-day freight with shop-friendly LTL rates.',
+    q: 'What is Partslink?',
+    a: 'Partslink is a universal numbering system for the identification of aftermarket collision replacement parts. It provides a unique, universal part number for each independently reproduced replacement part as supplied by all aftermarket manufacturers and suppliers.',
   },
   {
-    q: 'Can I open a wholesale account?',
-    a: 'Yes. Shop accounts get net-30 terms, dedicated specialists, and account pricing on every order. Start at /register or call the desk and we’ll set you up.',
+    q: 'How do I know I am ordering the correct part?',
+    a: 'We include the OEM Part Number and Partslink in our listings. The OEM part number and Partslink ensure that the part is the same as the one your dealership would use, giving you confidence that you are ordering exactly the right part for your vehicle.',
   },
   {
-    q: 'What if the part doesn’t fit?',
-    a: 'If the part doesn’t bolt up to the year/make/model on the invoice, we cover return shipping and dispatch a replacement on the next delivery run.',
+    q: 'What are NSF-certified parts?',
+    a: 'NSF Automotive is an independent third-party certifier of automotive aftermarket parts, providing global certification services throughout the automotive supply chain. It is accredited to develop and certify to a range of automotive industry standards and is established to certify aftermarket auto parts in North America and Australia.',
   },
   {
-    q: 'Do you mix paint to a specific color code?',
-    a: 'Yes — bring the VIN, the panel, or the OEM code and the paint desk will camera-match and mix in-house while you wait.',
+    q: 'What is the warranty on the parts?',
+    a: 'All merchandise sold by Automart Nationwide is subject only to the manufacturer’s warranty and conditions, if any, and is subject to submission to the manufacturer for inspection and approval for repair or replacement of merchandise. All other accessories carry a 30-day warranty; light bulbs carry a 90-day warranty. No warranty whatsoever will be valid if the defect was caused by the customer’s abuse, negligence, or mishandling.',
   },
   {
-    q: 'What are your hours?',
-    a: 'Mon–Fri 8 AM – 6 PM and Sat 8 AM – 3 PM CST. The phone is the fastest path; the counter in Addison is open the same hours.',
+    q: 'Do the parts come with hardware like nuts, screws, bolts and brackets?',
+    a: 'Our parts do not come with any accessories or hardware. We highly recommend reusing any accessories from the old parts that are not damaged. If you do need installation hardware, your local dealership, hardware store, or auto parts store will typically have what you need.',
   },
 ];
 
@@ -58,28 +54,21 @@ export default function FaqPage() {
     <div className="am-page">
       <TopBar />
       <Header />
-      <PageHero
-        crumb="FAQs"
-        eyebrow="Straight answers, no script"
-        headlineLead="Questions we answer"
-        headlineAccent="every day."
-        lede="Don’t see what you’re looking for? Call the desk — a real specialist picks up, usually in under a minute."
+      <PageBanner
+        eyebrow="Support"
+        headlineLead="Frequently Asked Questions"
+        lede="Here you can find answers to the questions most people have about our parts, certifications, warranties, and ordering process."
+      />
+      <FaqLinear eyebrow="FAQs" headline="Answers, in plain English." items={faqs} />
+      <StillHaveQuestion
+        eyebrow="Still have a question?"
+        headline="Talk to a real parts specialist."
+        lede="Our desk in Addison, IL picks up on the first or second ring — Mon–Fri 8 AM – 6 PM and Sat 8 AM – 3 PM CST."
         ctas={[
           { label: `Call ${siteConfig.phone}`, href: siteConfig.phoneHref, variant: 'yellow' },
-          { label: 'Ask in writing', href: '/#quote', variant: 'ghost-w' },
+          { label: 'Request a quote', href: '/#quote', variant: 'outline-w' },
         ]}
       />
-      <Values />
-      <Marquee />
-      <FaqList
-        eyebrow="FAQs"
-        headline="Pricing, fitment, delivery, returns."
-        lede="Tap a question to expand the answer."
-        items={faqs}
-      />
-      <SplitCta />
-      <Reviews />
-      <Quote />
       <Footer />
       <Toast />
     </div>

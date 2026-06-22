@@ -1,8 +1,8 @@
-import { Categories } from '@/components/blocks/automart/Categories';
 import { Footer } from '@/components/blocks/automart/Footer';
 import { Header } from '@/components/blocks/automart/Header';
 import { Hero } from '@/components/blocks/automart/Hero';
 import { Marquee } from '@/components/blocks/automart/Marquee';
+import { PartsCategories } from '@/components/blocks/automart/PartsCategories';
 import { Quote } from '@/components/blocks/automart/Quote';
 import { Reviews } from '@/components/blocks/automart/Reviews';
 import { SplitCta } from '@/components/blocks/automart/SplitCta';
@@ -13,6 +13,7 @@ import { VehicleTypes } from '@/components/blocks/automart/VehicleTypes';
 import { Why } from '@/components/blocks/automart/Why';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { siteConfig } from '@/config/site.config';
+import { partCategories } from '@/lib/automart/data';
 
 export default function HomePage() {
   return (
@@ -22,7 +23,13 @@ export default function HomePage() {
       <Hero />
       <Values />
       <Marquee />
-      <Categories />
+      <PartsCategories
+        eyebrow={siteConfig.content.categoriesHead.eyebrow}
+        headline={siteConfig.content.categoriesHead.headline}
+        lede={siteConfig.content.categoriesHead.lede}
+        items={partCategories}
+        callHref={siteConfig.phoneHref}
+      />
       <SplitCta />
       <VehicleTypes />
       <Why />

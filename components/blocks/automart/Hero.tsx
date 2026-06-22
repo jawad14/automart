@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Fragment } from 'react';
 import { siteConfig } from '@/config/site.config';
 import { btnClass } from '@/lib/automart/button';
@@ -50,7 +51,16 @@ export function Hero() {
 
         <div className="am-hero-right">
           <Finder />
-          <div className="am-hero-photo">{hero.photoCaption}</div>
+          <div className="am-hero-photo">
+            <Image
+              src="/automart/hero-collision-parts.png"
+              alt="Collision parts — bumpers, headlights, fenders, mirrors"
+              width={920}
+              height={620}
+              priority
+              sizes="(max-width: 900px) 100vw, 520px"
+            />
+          </div>
         </div>
       </div>
     </section>

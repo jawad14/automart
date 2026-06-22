@@ -1,6 +1,9 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import type { ComponentType } from 'react';
 import { siteConfig } from '@/config/site.config';
+
+const isInternalRoute = (href: string) => href.startsWith('/') && !href.startsWith('//');
 
 const Facebook = () => (
   <svg viewBox="0 0 24 24" fill="currentColor">
@@ -64,7 +67,11 @@ export function Footer() {
               <ul>
                 {col.links.map((l) => (
                   <li key={l.label}>
-                    <a href={l.href}>{l.label}</a>
+                    {isInternalRoute(l.href) ? (
+                      <Link href={l.href}>{l.label}</Link>
+                    ) : (
+                      <a href={l.href}>{l.label}</a>
+                    )}
                   </li>
                 ))}
               </ul>

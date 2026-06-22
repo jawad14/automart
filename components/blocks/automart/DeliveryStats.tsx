@@ -1,10 +1,14 @@
 export type DeliveryStat = { value: string; label: string };
 
-type Props = { items: DeliveryStat[] };
+type Props = {
+  items: DeliveryStat[];
+  tone?: 'default' | 'red';
+};
 
-export function DeliveryStats({ items }: Props) {
+export function DeliveryStats({ items, tone = 'default' }: Props) {
+  const className = tone === 'red' ? 'am-dstats am-dstats-red' : 'am-dstats';
   return (
-    <section className="am-dstats">
+    <section className={className}>
       <div className="am-wrap am-dstats-row">
         {items.map((s) => (
           <div className="am-dstat" key={s.label}>

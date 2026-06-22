@@ -1,55 +1,154 @@
 import type { Metadata } from 'next';
-import { CardGrid } from '@/components/blocks/automart/CardGrid';
-import { Categories } from '@/components/blocks/automart/Categories';
+import { DeliveryRules, type DeliveryRule } from '@/components/blocks/automart/DeliveryRules';
+import { DeliveryStats, type DeliveryStat } from '@/components/blocks/automart/DeliveryStats';
 import { Footer } from '@/components/blocks/automart/Footer';
 import { Header } from '@/components/blocks/automart/Header';
-import { Marquee } from '@/components/blocks/automart/Marquee';
-import { PageHero } from '@/components/blocks/automart/PageHero';
-import { Quote } from '@/components/blocks/automart/Quote';
-import { Reviews } from '@/components/blocks/automart/Reviews';
-import { SectionHeading } from '@/components/blocks/automart/SectionHeading';
-import { SplitCta } from '@/components/blocks/automart/SplitCta';
+import { PageBanner } from '@/components/blocks/automart/PageBanner';
+import { PartsCategories, type PartCategory } from '@/components/blocks/automart/PartsCategories';
+import { StillHaveQuestion } from '@/components/blocks/automart/StillHaveQuestion';
 import { Toast } from '@/components/blocks/automart/Toast';
 import { TopBar } from '@/components/blocks/automart/TopBar';
-import { Values } from '@/components/blocks/automart/Values';
 import { siteConfig } from '@/config/site.config';
-import { CategoryIcon } from '@/lib/automart/icons';
 
 export const metadata: Metadata = {
-  title: 'Shop All Auto Body Parts — Bumpers, Lights, Fenders & More',
+  title: 'Shop All Auto Body Parts — OEM-Quality Collision Parts',
   description:
-    'Over 120,000 aftermarket and OEM-comparable collision parts in stock. Twice-daily delivery across Chicagoland and shop-friendly pricing on every SKU.',
+    'Over 8,000 SKUs in stock — bumpers, lights, fenders, mirrors, grilles, and more. Aftermarket/OEM-comparable quality at honest prices with same-day delivery across the Chicago metro.',
 };
 
-const quickTiles = [
-  { key: 'bumper', label: 'Bumpers' } as const,
-  { key: 'light', label: 'Headlights' } as const,
-  { key: 'grille', label: 'Grilles' } as const,
-  { key: 'mirror', label: 'Mirrors' } as const,
-  { key: 'hood', label: 'Hoods' } as const,
-  { key: 'corner', label: 'Corner Lights' } as const,
+const stats: DeliveryStat[] = [
+  { value: '500+', label: 'Vehicle Makes & Models' },
+  { value: 'Twice a Day', label: 'Local Delivery' },
+  { value: '25 Yrs', label: 'Industry Experience' },
 ];
 
-const steps = [
+const categories: PartCategory[] = [
   {
-    n: '01',
-    title: 'Pick a category',
-    body: 'Browse the catalog or just tell us what panel is damaged — bumper, fender, headlight, hood. No part numbers required.',
+    slug: 'bumpers',
+    name: 'Bumpers & Bumper Covers',
+    description: 'Front & rear bumper covers, reinforcements, absorbers, and complete assemblies.',
+    skuBadge: '1,200+ SKUs',
+    image: { src: '/automart/parts-cat/bumper.webp', alt: 'Bumpers and bumper covers' },
   },
   {
-    n: '02',
-    title: 'Tell us the vehicle',
-    body: 'Year, make, model and trim — and the VIN if you have it. A specialist confirms fitment in seconds, not days.',
+    slug: 'headlights',
+    name: 'Headlights & Tail Lights',
+    description: 'OEM-spec headlight assemblies, tail lamp units, and replacement lenses.',
+    skuBadge: '900+ SKUs',
+    image: { src: '/automart/parts-cat/headlights.webp', alt: 'Headlights and tail lights' },
   },
   {
-    n: '03',
-    title: 'Lock in the price',
-    body: 'We quote you the best price up front, beat any written competitor quote, and apply your account tier if you’re a shop.',
+    slug: 'corner-lights',
+    name: 'Corner & Parking Lights',
+    description: 'Corner lights, side markers, and parking lamp assemblies for all makes.',
+    skuBadge: '400+ SKUs',
+    image: { src: '/automart/parts-cat/corner-lights.webp', alt: 'Corner and parking lights' },
   },
   {
-    n: '04',
-    title: 'On the next truck',
-    body: 'In zone? It’s on the morning or afternoon run. Outside zone? Next-day freight at shop-friendly LTL rates.',
+    slug: 'fog-lights',
+    name: 'Fog Lights',
+    description: 'Direct-fit fog lamp assemblies and housings.',
+    skuBadge: '350+ SKUs',
+    image: { src: '/automart/parts-cat/fog-light.webp', alt: 'Fog lights' },
+  },
+  {
+    slug: 'hoods',
+    name: 'Hoods & Panels',
+    description: 'Replacement hoods, bonnet panels, cowl panels, and hood hinges.',
+    skuBadge: '600+ SKUs',
+    image: { src: '/automart/parts-cat/front-bonnet.webp', alt: 'Hoods and front panels' },
+  },
+  {
+    slug: 'grilles',
+    name: 'Grilles & Grille Guards',
+    description: 'Upper & lower grilles, grille inserts, and overlay kits.',
+    skuBadge: '500+ SKUs',
+    image: { src: '/automart/parts-cat/grill.webp', alt: 'Grilles and grille guards' },
+  },
+  {
+    slug: 'mirrors',
+    name: 'Mirrors',
+    description: 'Power, manual, heated, and tow mirrors for cars and trucks.',
+    skuBadge: '700+ SKUs',
+    image: { src: '/automart/parts-cat/side-mirror.webp', alt: 'Side mirrors' },
+  },
+  {
+    slug: 'splash-guards',
+    name: 'Splash Guards & Shields',
+    description: 'Mud flaps, splash shields, fender liners, and wheel well covers.',
+    skuBadge: '300+ SKUs',
+    image: { src: '/automart/parts-cat/splash-shield.webp', alt: 'Splash guards and shields' },
+  },
+  {
+    slug: 'ac-condensers',
+    name: 'A/C Condensers',
+    description: 'Direct-fit A/C condensers and receiver-drier units.',
+    skuBadge: '280+ SKUs',
+    image: { src: '/automart/parts-cat/ac-condenser.webp', alt: 'A/C condensers' },
+  },
+  {
+    slug: 'fans',
+    name: 'Radiator & Condenser Fans',
+    description: 'Radiator condenser fan assemblies and individual fan motors.',
+    skuBadge: '200+ SKUs',
+    image: {
+      src: '/automart/parts-cat/condenser-fan.webp',
+      alt: 'Radiator and condenser fans',
+    },
+  },
+  {
+    slug: 'radiators',
+    name: 'Radiators & Cooling',
+    description: 'Radiators, heater cores, coolant overflow tanks, and thermostat housings.',
+    skuBadge: '380+ SKUs',
+    image: { src: '/automart/parts-cat/radiator-cooling.webp', alt: 'Radiators and cooling' },
+  },
+  {
+    slug: 'fenders',
+    name: 'Fenders',
+    description: 'Front fenders, quarter panels, and inner fender liners for all makes.',
+    skuBadge: '550+ SKUs',
+    image: { src: '/automart/parts-cat/handles.webp', alt: 'Fenders' },
+  },
+  {
+    slug: 'doors',
+    name: 'Doors & Related',
+    description: 'Door shells, door skins, hinges, and door weatherstripping.',
+    skuBadge: '420+ SKUs',
+    image: { src: '/automart/parts-cat/door.webp', alt: 'Doors and door hardware' },
+  },
+  {
+    slug: 'trunks',
+    name: 'Trunk Lids & Tailgates',
+    description: 'Trunk lids, deck lids, tailgates, and liftgate assemblies.',
+    skuBadge: '310+ SKUs',
+    image: { src: '/automart/parts-cat/trunk.webp', alt: 'Trunk lids and tailgates' },
+  },
+  {
+    slug: 'inner-structure',
+    name: 'Inner Structure',
+    description: 'Radiator core supports, strut towers, sub-frames, and unibody parts.',
+    skuBadge: '240+ SKUs',
+    image: { src: '/automart/parts-cat/inner-structure.webp', alt: 'Inner body structure' },
+  },
+];
+
+const steps: DeliveryRule[] = [
+  {
+    title: 'Call or Request a Quote',
+    body: `Reach our parts specialists at ${siteConfig.phone} or submit an online quote request. Have your vehicle year, make, model, and VIN handy.`,
+  },
+  {
+    title: 'Get Your Price',
+    body: 'We check stock and give you an honest price — guaranteed to be the best you’ll find. No hidden fees, no surprises.',
+  },
+  {
+    title: 'Confirm & Schedule Delivery',
+    body: 'Confirm your order and we’ll schedule same-day or next-day delivery to your shop or location.',
+  },
+  {
+    title: 'Receive & Inspect',
+    body: 'Our driver delivers direct to your bay. Inspect parts on arrival — any issues are resolved immediately, no hassle.',
   },
 ];
 
@@ -58,52 +157,48 @@ export default function PartsPage() {
     <div className="am-page">
       <TopBar />
       <Header />
-      <PageHero
-        crumb="Shop All Parts"
-        eyebrow="120,000+ SKUs in stock"
-        headlineLead="Shop all"
-        headlineAccent="auto body parts."
-        lede="Aftermarket and OEM-comparable collision parts — bumpers, lights, fenders, mirrors, hoods, grilles and cooling. Browse the catalog, then call the desk to confirm fitment and lock in pricing."
+      <PageBanner
+        eyebrow="OEM-Quality Parts"
+        headlineLead="Shop All Auto"
+        headlineAccent="Body Parts"
+        lede="Over 8,000 SKUs in stock — bumpers, lights, fenders, mirrors, grilles, and more. All aftermarket/OEM comparable quality at honest prices, with same-day delivery across the Chicago metro."
         ctas={[
-          { label: `Call ${siteConfig.phone}`, href: siteConfig.phoneHref, variant: 'yellow' },
-          { label: 'Request a quote', href: '/#quote', variant: 'ghost-w' },
+          { label: 'Call to Order', href: siteConfig.phoneHref, variant: 'yellow' },
+          { label: 'Request a Quote', href: '/#quote', variant: 'ghost-w' },
+        ]}
+        trustItems={['Same-Day Delivery', 'Best Price Guarantee', '25 Years in Business']}
+        mosaic={[
+          { src: '/automart/parts-cat/bumper.webp', alt: 'Bumper' },
+          { src: '/automart/parts-cat/headlights.webp', alt: 'Headlight' },
+          { src: '/automart/parts-cat/grill.webp', alt: 'Grille' },
+          { src: '/automart/parts-cat/side-mirror.webp', alt: 'Mirror' },
+          { src: '/automart/parts-cat/front-bonnet.webp', alt: 'Hood' },
+          { src: '/automart/parts-cat/corner-lights.webp', alt: 'Corner light' },
         ]}
       />
-      <Values />
-      <section className="am-section">
-        <div className="am-wrap">
-          <SectionHeading
-            eyebrow="Quick shop"
-            headline="Top categories."
-            lede="The most-ordered parts on our shelf. Tap a tile to jump to the full catalog."
-          />
-          <div className="am-vt-grid">
-            {quickTiles.map((t) => (
-              <a className="am-vt" key={t.key} href="#categories">
-                <span className="am-vti">
-                  <CategoryIcon k={t.key} />
-                </span>
-                <b>{t.label}</b>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-      <Marquee />
-      <Categories />
-      <section className="am-section am-section-alt">
-        <div className="am-wrap">
-          <SectionHeading
-            eyebrow="Simple process"
-            headline="How to order parts."
-            lede="No checkout, no sign-up — just a quick call to a real parts specialist. Four steps and the part’s on the next truck."
-          />
-          <CardGrid variant={4} items={steps} />
-        </div>
-      </section>
-      <SplitCta />
-      <Reviews />
-      <Quote />
+      <DeliveryStats items={stats} tone="red" />
+      <PartsCategories
+        eyebrow="Browse by Category"
+        headline="All Parts Categories"
+        lede="Can’t find what you need? Call us — our team locates hard-to-find parts daily."
+        items={categories}
+        callHref={siteConfig.phoneHref}
+      />
+      <DeliveryRules
+        eyebrow="Simple Process"
+        headline="How to Order Parts"
+        items={steps}
+        cols={4}
+      />
+      <StillHaveQuestion
+        eyebrow="Ready to order?"
+        headline="We have the part. Let’s get it to you today."
+        lede={`Our parts specialists are standing by ${siteConfig.hours}. Same-day delivery available for orders placed before cutoff.`}
+        ctas={[
+          { label: `Call ${siteConfig.phone}`, href: siteConfig.phoneHref, variant: 'yellow' },
+          { label: 'Request a Quote', href: '/#quote', variant: 'outline-w' },
+        ]}
+      />
       <Footer />
       <Toast />
     </div>

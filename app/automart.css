@@ -2030,6 +2030,55 @@ body:has(.am-page) {
   width: 100%;
   height: auto;
 }
+.am-page-banner-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+/* paints variant — blurred full-bleed background image, gold gradient headline */
+.am-page-banner-bg {
+  background: #09090f;
+  min-height: 440px;
+  display: flex;
+  align-items: center;
+  padding-block: clamp(56px, 8vw, 96px);
+}
+.am-page-banner-bg::before {
+  display: none;
+}
+.am-page-banner-bgimg {
+  position: absolute;
+  inset: -12px;
+  z-index: 0;
+}
+.am-page-banner-bgimg :where(img) {
+  filter: blur(10px) brightness(0.28) saturate(1.6);
+  object-fit: cover;
+}
+.am-page-banner-bg .am-page-banner-inner {
+  position: relative;
+  z-index: 1;
+}
+.am-page-banner-bg h1 {
+  background: linear-gradient(135deg, #fff 40%, var(--am-yellow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+.am-page-banner-bg h1 .am-accent {
+  background: linear-gradient(135deg, #fff 0%, var(--am-yellow) 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+.am-page-banner-bg .am-page-banner-eyebrow {
+  color: var(--am-yellow);
+}
+
 @media (max-width: 900px) {
   .am-page-banner-split .am-page-banner-inner {
     grid-template-columns: 1fr;
@@ -2040,6 +2089,76 @@ body:has(.am-page) {
   }
   .am-page-banner h1 {
     font-size: clamp(28px, 7vw, 44px);
+  }
+  .am-page-banner-bg {
+    min-height: auto;
+    padding-block: 52px;
+  }
+}
+@media (max-width: 640px) {
+  .am-page-banner-cta {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  .am-page-banner-cta .am-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* PageBanner — trust items */
+.am-page-banner-trust {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+.am-page-banner-trust span {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.78);
+  letter-spacing: 0.02em;
+}
+
+/* PageBanner — image mosaic on the right (3x2 tiles) */
+.am-page-banner-mosaic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+  border-radius: 16px;
+  overflow: hidden;
+  width: clamp(280px, 36vw, 520px);
+  align-self: stretch;
+}
+.am-page-banner-tile {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: rgba(255, 255, 255, 0.04);
+}
+.am-page-banner-tile :where(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.am-page-banner-tile:hover :where(img) {
+  transform: scale(1.06);
+}
+@media (max-width: 900px) {
+  .am-page-banner-mosaic {
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .am-page-banner-mosaic {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .am-page-banner-tile:last-child {
+    display: none;
   }
 }
 
@@ -2482,6 +2601,38 @@ body:has(.am-page) {
   }
 }
 
+/* red tone — used on parts page */
+.am-dstats-red {
+  background: var(--am-red);
+  border-bottom: 0;
+}
+.am-dstats-red .am-dstat {
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+}
+.am-dstats-red .am-dstat:first-child {
+  border-left: 0;
+}
+.am-dstats-red .am-dstat-val {
+  color: #fff;
+}
+.am-dstats-red .am-dstat-label {
+  color: rgba(255, 255, 255, 0.82);
+}
+@media (max-width: 720px) {
+  .am-dstats-red .am-dstat:nth-child(3) {
+    border-left: 0;
+  }
+}
+@media (max-width: 420px) {
+  .am-dstats-red .am-dstat {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .am-dstats-red .am-dstat:first-child {
+    border-top: 0;
+  }
+}
+
 /* zone cards */
 .am-dzone-grid {
   margin-top: 42px;
@@ -2734,6 +2885,131 @@ body:has(.am-page) {
 }
 @media (max-width: 900px) {
   .am-drules {
+    grid-template-columns: 1fr;
+  }
+}
+.am-drules-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 1100px) {
+  .am-drules-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .am-drules-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===========================================================
+   Parts — category card grid
+   Reference: bestvaluepart.com/parts .parts-grid / .part-card
+   =========================================================== */
+.am-parts-grid {
+  margin-top: 42px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.am-part-card {
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid var(--am-line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+.am-part-card:hover {
+  box-shadow: 0 18px 38px -22px rgba(0, 0, 0, 0.18);
+  border-color: var(--am-red);
+  transform: translateY(-3px);
+}
+.am-part-card-img-wrap {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--am-mist);
+}
+.am-part-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+.am-part-card:hover .am-part-card-img {
+  transform: scale(1.05);
+}
+.am-part-card-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(22, 22, 22, 0.85);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.am-part-card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+.am-part-card-name {
+  font-family: var(--am-display);
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--am-black);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin: 0 0 6px;
+}
+.am-part-card-desc {
+  font-size: 12.5px;
+  color: var(--am-muted);
+  line-height: 1.55;
+  margin: 0 0 12px;
+  flex: 1 1 auto;
+}
+.am-part-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--am-red);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: auto;
+  transition: gap 0.15s ease;
+}
+.am-part-card:hover .am-part-card-cta {
+  gap: 10px;
+}
+@media (max-width: 1024px) {
+  .am-parts-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 720px) {
+  .am-parts-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+@media (max-width: 420px) {
+  .am-parts-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -3010,4 +3286,229 @@ body:has(.am-page) {
 }
 .am-rma-spanish-list li strong {
   color: var(--am-black);
+}
+
+/* ===========================================================
+   Paints — 15-category grid, 6-step refinishing process, brands
+   Reference: bestvaluepart.com/paints
+   =========================================================== */
+.am-paint-cats {
+  margin-top: 42px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.am-paint-cat {
+  background: #fff;
+  border: 1px solid var(--am-line);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+.am-paint-cat:hover {
+  box-shadow: 0 18px 38px -22px rgba(0, 0, 0, 0.16);
+  border-color: var(--am-mist-2);
+  transform: translateY(-3px);
+}
+.am-paint-cat-img {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--am-mist);
+}
+.am-paint-cat-img :where(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.am-paint-cat:hover .am-paint-cat-img :where(img) {
+  transform: scale(1.04);
+}
+.am-paint-cat-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  flex: 1 1 auto;
+}
+.am-paint-cat-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.am-paint-cat-icon {
+  font-size: 22px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(228, 0, 43, 0.08);
+  border-radius: 10px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.am-paint-cat-head h3 {
+  font-family: var(--am-display);
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--am-black);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.am-paint-cat-body > p {
+  font-size: 13.5px;
+  color: var(--am-muted);
+  line-height: 1.6;
+  margin: 0;
+  flex: 1 1 auto;
+}
+.am-paint-cat-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.am-paint-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--am-black);
+  background: var(--am-mist);
+  border: 1px solid var(--am-line);
+  border-radius: 6px;
+  padding: 3px 9px;
+}
+.am-paint-cat-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--am-red);
+  text-decoration: none;
+  margin-top: 4px;
+  transition: gap 0.15s ease;
+  align-self: flex-start;
+}
+.am-paint-cat-cta:hover {
+  gap: 9px;
+}
+@media (max-width: 1024px) {
+  .am-paint-cats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .am-paint-cats {
+    grid-template-columns: 1fr;
+  }
+  .am-paint-cat-img {
+    height: 150px;
+  }
+}
+
+/* refinishing process */
+.am-paint-steps {
+  list-style: none;
+  margin: 42px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.am-paint-step {
+  display: flex;
+  gap: 16px;
+  background: #fff;
+  border: 1px solid var(--am-line);
+  border-radius: 16px;
+  padding: 24px;
+}
+.am-paint-step-num {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--am-red);
+  color: #fff;
+  font-family: var(--am-display);
+  font-size: 16px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.am-paint-step-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.am-paint-step-body h4 {
+  font-family: var(--am-display);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--am-black);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.am-paint-step-body p {
+  font-size: 13.5px;
+  color: var(--am-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+.am-paint-step-products {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--am-red);
+  margin-top: 4px;
+}
+@media (max-width: 1024px) {
+  .am-paint-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .am-paint-steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* brand pills */
+.am-paint-brands {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.am-paint-brand {
+  padding: 12px 24px;
+  border: 1.5px solid var(--am-line);
+  border-radius: 10px;
+  font-family: var(--am-display);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--am-muted);
+  background: #fff;
+  letter-spacing: 0.02em;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background 0.15s ease;
+}
+.am-paint-brand:hover {
+  border-color: var(--am-red);
+  color: var(--am-red);
+  background: rgba(228, 0, 43, 0.04);
 }

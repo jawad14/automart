@@ -130,7 +130,7 @@ export function Register() {
                   inputMode="tel"
                   value={values.phone}
                   onChange={onChange}
-                  placeholder="(773) 000-0000"
+                  placeholder="(630) 000-0000"
                   className={errors.phone ? 'am-err' : ''}
                 />
               </div>

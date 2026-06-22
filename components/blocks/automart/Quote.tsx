@@ -137,7 +137,7 @@ export function Quote() {
                     id="q-phone"
                     name="phone"
                     type="tel"
-                    placeholder="(773) 000-0000"
+                    placeholder="(630) 000-0000"
                     value={values.phone}
                     onChange={onChange}
                     className={errors.phone ? 'am-err' : ''}

@@ -5,11 +5,6 @@ import { siteConfig } from '@/config/site.config';
 
 const isInternalRoute = (href: string) => href.startsWith('/') && !href.startsWith('//');
 
-const Facebook = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M14 9h3V6h-3c-2 0-3 1-3 3v2H8v3h3v7h3v-7h3l1-3h-4V9c0-.5.5-1 1-1z" />
-  </svg>
-);
 const Instagram = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -22,17 +17,10 @@ const LinkedIn = () => (
     <path d="M4 4h4v16H4zM6 2.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 9h3.8v2h.05c.53-1 1.83-2.05 3.76-2.05 4 0 4.74 2.64 4.74 6.07V20h-4v-4.6c0-1.1-.02-2.5-1.53-2.5s-1.77 1.2-1.77 2.43V20h-4z" />
   </svg>
 );
-const YouTube = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M22 12c0-2-.2-3.3-.4-4-.3-1-1-1.6-2-1.8C17.9 6 12 6 12 6s-5.9 0-7.6.2c-1 .2-1.7.8-2 1.8C2.2 8.7 2 10 2 12s.2 3.3.4 4c.3 1 1 1.6 2 1.8C6.1 18 12 18 12 18s5.9 0 7.6-.2c1-.2 1.7-.8 2-1.8.2-.7.4-2 .4-4zM10 15V9l5 3z" />
-  </svg>
-);
 
 const socialIcon: Record<string, ComponentType> = {
-  Facebook,
   Instagram,
   LinkedIn,
-  YouTube,
 };
 
 export function Footer() {
@@ -50,16 +38,18 @@ export function Footer() {
               className="am-logo am-logo-footer"
             />
             <p>{footer.brandTagline}</p>
-            <div className="am-fsocial">
-              {siteConfig.social.map((s) => {
-                const Icon = socialIcon[s.label];
-                return (
-                  <a key={s.label} href={s.href} aria-label={s.label}>
-                    {Icon ? <Icon /> : null}
-                  </a>
-                );
-              })}
-            </div>
+            {siteConfig.social.length > 0 ? (
+              <div className="am-fsocial">
+                {siteConfig.social.map((s) => {
+                  const Icon = socialIcon[s.label];
+                  return (
+                    <a key={s.label} href={s.href} aria-label={s.label}>
+                      {Icon ? <Icon /> : null}
+                    </a>
+                  );
+                })}
+              </div>
+            ) : null}
           </div>
           {footer.columns.map((col) => (
             <div className="am-fcol" key={col.title}>

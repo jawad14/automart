@@ -303,13 +303,13 @@ body:has(.am-page) {
   height: auto;
 }
 .am-logo-header {
-  max-height: 42px;
+  max-height: 96px;
 }
 .am-logo-drawer {
   max-height: 34px;
 }
 .am-logo-footer {
-  max-height: 38px;
+  max-height: 56px;
   margin-bottom: 18px;
 }
 .am-footer .am-fbrand img {
@@ -495,7 +495,7 @@ body:has(.am-page) {
   display: flex;
   align-items: center;
   gap: 26px;
-  min-height: 80px;
+  min-height: 88px;
 }
 .am-brand {
   display: flex;
@@ -503,7 +503,7 @@ body:has(.am-page) {
   flex: 0 0 auto;
 }
 .am-brand img {
-  height: 42px;
+  height: 64px;
   width: auto;
 }
 .am-nav {
@@ -551,6 +551,9 @@ body:has(.am-page) {
   margin-right: 2px;
   white-space: nowrap;
 }
+.am-header-quote {
+  display: none;
+}
 .am-header-phone small {
   font-size: 11px;
   color: rgba(255, 255, 255, 0.78);
@@ -584,6 +587,28 @@ body:has(.am-page) {
   }
   .am-burger {
     display: inline-flex;
+  }
+  .am-header .am-wrap {
+    min-height: 84px;
+  }
+  .am-header-actions {
+    margin-left: auto;
+  }
+  .am-header-quote {
+    display: inline-flex;
+  }
+  .am-brand img,
+  .am-logo-header {
+    max-height: 62px;
+  }
+  .am-topbar .am-wrap {
+    min-height: 40px;
+    white-space: nowrap;
+  }
+  .am-tb-right .am-flag,
+  .am-tb-right .am-tb-muted,
+  .am-tb-right .am-sep {
+    display: none;
   }
 }
 
@@ -1312,6 +1337,44 @@ body:has(.am-page) {
   gap: 18px;
   margin-top: 40px;
 }
+.am-rev-splide {
+  margin-top: 40px;
+  padding: 0 4px;
+}
+.am-rev-splide .splide__track {
+  padding: 4px 0;
+}
+.am-rev-splide .splide__slide {
+  height: auto;
+}
+.am-rev-splide .am-rev {
+  height: 100%;
+}
+.am-rev-nav {
+  display: flex;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+.am-rev-nav button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--am-line);
+  border-radius: 11px;
+  background: #fff;
+  color: var(--am-black);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.am-rev-nav button:hover {
+  background: var(--am-mist);
+  border-color: var(--am-black);
+}
+.am-rev-nav button svg {
+  width: 18px;
+  height: 18px;
+}
 .am-rev {
   background: #fff;
   border: 1px solid var(--am-line);
@@ -1344,6 +1407,7 @@ body:has(.am-page) {
 .am-rev .am-av {
   width: 42px;
   height: 42px;
+  flex: 0 0 42px;
   border-radius: 50%;
   background: var(--am-black);
   color: #fff;
@@ -1581,7 +1645,7 @@ section.am-quote::before {
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 .am-footer .am-fbrand img {
-  height: 38px;
+  height: 56px;
   margin-bottom: 18px;
 }
 /* base layer typography.css forces text-foreground on every <p> — re-inherit
@@ -1817,13 +1881,17 @@ section.am-quote::before {
   }
   .am-header-actions {
     gap: 8px;
+    margin-left: auto;
   }
   .am-header-actions > .am-btn {
     display: none;
   }
+  .am-header-phone {
+    display: none;
+  }
   .am-brand img,
   .am-logo-header {
-    max-height: 36px;
+    max-height: 64px;
   }
 
   /* drawer panel — full-width on tiny phones, less inner padding */
@@ -1927,7 +1995,7 @@ section.am-quote::before {
   }
   .am-brand img,
   .am-logo-header {
-    max-height: 32px;
+    max-height: 54px;
   }
   .am-burger {
     width: 40px;

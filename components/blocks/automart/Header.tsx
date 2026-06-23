@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { siteConfig } from '@/config/site.config';
+import { btnClass } from '@/lib/automart/button';
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -51,6 +52,9 @@ export function Header() {
               <small>Call to order</small>
               <b>{siteConfig.phone}</b>
             </a>
+            <Link className={`${btnClass('yellow')} am-header-quote`} href="/#quote">
+              Request a quote
+            </Link>
             <button
               type="button"
               className="am-burger"

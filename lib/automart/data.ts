@@ -161,6 +161,41 @@ export const reviews: Review[] = [
     name: 'Sara P.',
     meta: 'Service Manager · Phoenix, AZ',
   },
+  {
+    quote:
+      'Needed a side mirror for a Cherokee and everywhere else wanted to sell me just the glass. Automart had the complete assembly in stock — and the price honestly surprised me.',
+    initials: 'DV',
+    name: 'Danny V.',
+    meta: 'DIY Owner · Cicero, IL',
+  },
+  {
+    quote:
+      'Their counter guys actually know parts. I give them a year, make and model and they pull the right grille and headlight the first time. No wrong boxes, no back-and-forth.',
+    initials: 'RA',
+    name: 'Rico A.',
+    meta: 'Body Shop Tech · Berwyn, IL',
+  },
+  {
+    quote:
+      'Twice-a-day delivery is the difference maker for my shop. A morning order is on the bench by the afternoon run, so cars are not sitting around waiting on a fender.',
+    initials: 'KM',
+    name: 'Kevin M.',
+    meta: 'Collision Shop Owner · Elmhurst, IL',
+  },
+  {
+    quote:
+      'We run multiple bays and Automart handles our volume without missing a beat. Sheet metal, doors, cooling — if it is a common collision part, they stock it deep.',
+    initials: 'TN',
+    name: 'Tony N.',
+    meta: 'Fleet Service Manager · Naperville, IL',
+  },
+  {
+    quote:
+      'Ordered a hood and core support for an older Silverado I figured I would be chasing for weeks. They found both the same day and shipped them out clean. I will be back.',
+    initials: 'CB',
+    name: 'Carlos B.',
+    meta: 'Independent Mechanic · Milwaukee, WI',
+  },
 ];
 
 export const makes = [

@@ -147,10 +147,7 @@ export const siteConfig: SiteConfig = {
     { label: 'Careers', href: '/careers' },
     { label: 'Register Account', href: '/register' },
   ],
-  social: [
-    { label: 'Facebook', href: 'https://www.facebook.com/AutomartNW' },
-    { label: 'YouTube', href: 'https://www.youtube.com/channel/UCAD4HU0nHDEE34Lo11v_F-g' },
-  ],
+  social: [],
   providers: {
     logger: 'console',
     analytics: 'none',

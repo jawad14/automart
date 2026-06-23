@@ -1393,6 +1393,9 @@ body:has(.am-page) {
   width: 17px;
   height: 17px;
 }
+.am-rev .am-stars svg.am-star-empty {
+  color: var(--am-line);
+}
 .am-rev .am-quote {
   font-size: 16px;
   color: var(--am-ink);

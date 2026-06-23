@@ -7,8 +7,8 @@ import { siteConfig } from '@/config/site.config';
 import { reviews } from '@/lib/automart/data';
 import { Reveal } from './Reveal';
 
-const Star = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
+const Star = ({ filled }: { filled: boolean }) => (
+  <svg className={filled ? undefined : 'am-star-empty'} viewBox="0 0 24 24" fill="currentColor">
     <path d="m12 2 3 6.5 7 .8-5.2 4.7L18.5 21 12 17.3 5.5 21 7.2 14 2 9.3l7-.8z" />
   </svg>
 );
@@ -85,9 +85,9 @@ export function Reviews() {
               {reviews.map((r) => (
                 <li className="splide__slide" key={r.name}>
                   <div className="am-rev">
-                    <div className="am-stars">
+                    <div className="am-stars" aria-label={`${r.rating} out of 5 stars`}>
                       {Array.from({ length: 5 }).map((_, i) => (
-                        <Star key={i} />
+                        <Star key={i} filled={i < r.rating} />
                       ))}
                     </div>
                     <p className="am-quote">&ldquo;{r.quote}&rdquo;</p>

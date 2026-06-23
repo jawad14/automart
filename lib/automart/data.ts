@@ -137,64 +137,73 @@ export type Review = {
   initials: string;
   name: string;
   meta: string;
+  rating: number;
 };
 
 export const reviews: Review[] = [
   {
+    rating: 5,
     quote:
-      'Fender showed up next day, lined up perfect, painted up clean. This is my second order — Automart is in my parts rotation now.',
-    initials: 'MR',
-    name: 'Mike R.',
-    meta: 'Collision Shop Owner · Joliet, IL',
+      'Ordered a front bumper and headlight set for a Civic — shipped the same day, showed up well-packed and lined right up. Exactly what I needed.',
+    initials: 'JM',
+    name: 'Jason M.',
+    meta: 'Collision Shop Owner · Indianapolis, IN',
   },
   {
+    rating: 4,
     quote:
-      'Called in, talked to a real person, found exactly the right bumper for my F-150. Saved me $180 vs. the dealer.',
-    initials: 'JT',
-    name: 'Jamal T.',
-    meta: 'DIY Owner · Atlanta, GA',
+      'Good price on a fender and the fit was solid. Took a day longer to arrive than I expected, but the part itself was perfect. Would order again.',
+    initials: 'AD',
+    name: 'Andre D.',
+    meta: 'DIY Owner · Columbus, OH',
   },
   {
+    rating: 5,
     quote:
-      'Headlight assemblies arrived double-boxed, no shipping damage, plug-and-play. Solid pricing for shop accounts.',
-    initials: 'SP',
-    name: 'Sara P.',
-    meta: 'Service Manager · Phoenix, AZ',
+      'We order for our fleet almost every week and they rarely miss. Pricing is fair and the team actually picks up the phone when you call.',
+    initials: 'LR',
+    name: 'Luis R.',
+    meta: 'Fleet Service Manager · St. Louis, MO',
   },
   {
+    rating: 5,
     quote:
-      'Needed a side mirror for a Cherokee and everywhere else wanted to sell me just the glass. Automart had the complete assembly in stock — and the price honestly surprised me.',
-    initials: 'DV',
-    name: 'Danny V.',
-    meta: 'DIY Owner · Cicero, IL',
+      'Needed a grille for an older Tahoe and they had it in stock when nobody else did. Smooth order, quick turnaround. Hard to beat.',
+    initials: 'BT',
+    name: 'Brian T.',
+    meta: 'Body Shop Tech · Detroit, MI',
   },
   {
+    rating: 4,
     quote:
-      'Their counter guys actually know parts. I give them a year, make and model and they pull the right grille and headlight the first time. No wrong boxes, no back-and-forth.',
-    initials: 'RA',
-    name: 'Rico A.',
-    meta: 'Body Shop Tech · Berwyn, IL',
+      'Mirror came in and works great. The box was a little beat up in transit but the part was fine. Honest pricing, no real complaints.',
+    initials: 'SK',
+    name: 'Steph K.',
+    meta: 'DIY Owner · Nashville, TN',
   },
   {
+    rating: 5,
     quote:
-      'Twice-a-day delivery is the difference maker for my shop. A morning order is on the bench by the afternoon run, so cars are not sitting around waiting on a fender.',
-    initials: 'KM',
-    name: 'Kevin M.',
-    meta: 'Collision Shop Owner · Elmhurst, IL',
+      'Hood and core support both arrived clean and on time. Saved me a good chunk versus the dealer quote. These folks know their parts.',
+    initials: 'CM',
+    name: 'Carlos M.',
+    meta: 'Independent Mechanic · Kansas City, KS',
   },
   {
+    rating: 4,
     quote:
-      'We run multiple bays and Automart handles our volume without missing a beat. Sheet metal, doors, cooling — if it is a common collision part, they stock it deep.',
-    initials: 'TN',
-    name: 'Tony N.',
-    meta: 'Fleet Service Manager · Naperville, IL',
+      'Right part at a great price, and the fit was spot on. Had to call once to confirm my order, but it shipped quick after that. Solid experience.',
+    initials: 'DP',
+    name: 'Derek P.',
+    meta: 'DIY Owner · Louisville, KY',
   },
   {
+    rating: 5,
     quote:
-      'Ordered a hood and core support for an older Silverado I figured I would be chasing for weeks. They found both the same day and shipped them out clean. I will be back.',
-    initials: 'CB',
-    name: 'Carlos B.',
-    meta: 'Independent Mechanic · Milwaukee, WI',
+      'Been buying collision parts here for two years across a few different cars. Consistent quality, consistent pricing. My go-to supplier now.',
+    initials: 'NV',
+    name: 'Nina V.',
+    meta: 'Repair Shop Owner · Milwaukee, WI',
   },
 ];
 

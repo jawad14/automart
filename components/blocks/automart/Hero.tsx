@@ -1,7 +1,9 @@
-import Image from 'next/image';
+import Link from 'next/link';
 import { Fragment } from 'react';
 import { siteConfig } from '@/config/site.config';
 import { btnClass } from '@/lib/automart/button';
+
+const isInternalRoute = (href: string) => href.startsWith('/') && !href.startsWith('//');
 
 const PhoneIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -28,12 +30,24 @@ export function Hero() {
           </h1>
           <p className="am-lede">{hero.lede}</p>
           <div className="am-hero-cta">
-            {hero.ctas.map((cta, i) => (
-              <a key={cta.label} className={btnClass(cta.variant, 'lg')} href={cta.href}>
-                {i === 0 ? <PhoneIcon /> : null}
-                {cta.label}
-              </a>
-            ))}
+            {hero.ctas.map((cta, i) => {
+              const className = btnClass(cta.variant, 'lg');
+              const content = (
+                <>
+                  {i === 0 ? <PhoneIcon /> : null}
+                  {cta.label}
+                </>
+              );
+              return isInternalRoute(cta.href) ? (
+                <Link key={cta.label} className={className} href={cta.href}>
+                  {content}
+                </Link>
+              ) : (
+                <a key={cta.label} className={className} href={cta.href}>
+                  {content}
+                </a>
+              );
+            })}
           </div>
           <div className="am-hero-stats">
             {hero.stats.map((s, i) => (
@@ -50,14 +64,17 @@ export function Hero() {
 
         <div className="am-hero-right">
           <div className="am-hero-photo">
-            <Image
-              src="/automart/hero-nationwide.webp"
-              alt="Automart Nationwide — collision parts delivered across the country"
-              width={920}
-              height={620}
-              priority
-              sizes="(max-width: 900px) 100vw, 520px"
-            />
+            <video
+              className="am-hero-video"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              poster="/automart/hero-poster.webp"
+            >
+              <source src="/automart/hero-video.webm" type="video/webm" />
+            </video>
           </div>
         </div>
       </div>

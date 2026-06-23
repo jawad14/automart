@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { Fragment } from 'react';
 import { siteConfig } from '@/config/site.config';
 import { btnClass } from '@/lib/automart/button';
-import { Finder } from './Finder';
 
 const PhoneIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -50,11 +49,10 @@ export function Hero() {
         </div>
 
         <div className="am-hero-right">
-          <Finder />
           <div className="am-hero-photo">
             <Image
-              src="/automart/hero-collision-parts.png"
-              alt="Collision parts — bumpers, headlights, fenders, mirrors"
+              src="/automart/hero-nationwide.webp"
+              alt="Automart Nationwide — collision parts delivered across the country"
               width={920}
               height={620}
               priority

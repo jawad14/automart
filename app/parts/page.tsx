@@ -58,11 +58,11 @@ export default function PartsPage() {
         ]}
         trustItems={['Same-Day Delivery', 'Best Price Guarantee', '25 Years in Business']}
         mosaic={[
-          { src: '/automart/parts-cat/bumper.webp', alt: 'Bumper' },
+          { src: '/automart/parts-cat/fenders.webp', alt: 'Fender' },
           { src: '/automart/parts-cat/headlights.webp', alt: 'Headlight' },
-          { src: '/automart/parts-cat/grill.webp', alt: 'Grille' },
-          { src: '/automart/parts-cat/side-mirror.webp', alt: 'Mirror' },
-          { src: '/automart/parts-cat/front-bonnet.webp', alt: 'Hood' },
+          { src: '/automart/parts-cat/grilles.webp', alt: 'Grille' },
+          { src: '/automart/parts-cat/mirrors.webp', alt: 'Mirror' },
+          { src: '/automart/parts-cat/hoods.webp', alt: 'Hood' },
           { src: '/automart/parts-cat/corner-lights.webp', alt: 'Corner light' },
         ]}
       />

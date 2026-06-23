@@ -684,7 +684,7 @@ body:has(.am-page) {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1.04fr 0.96fr;
+  grid-template-columns: 1fr 1fr;
   gap: clamp(30px, 5vw, 64px);
   align-items: center;
   padding-block: clamp(54px, 7vw, 92px);
@@ -831,16 +831,18 @@ body:has(.am-page) {
   font-weight: 700;
 }
 .am-hero-photo {
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: var(--am-shadow);
-  background: rgba(0, 0, 0, 0.25);
   position: relative;
 }
 .am-hero-photo :where(img) {
-  width: 100%;
+  width: 122%;
+  max-width: none;
   height: auto;
   display: block;
+}
+@media (max-width: 980px) {
+  .am-hero-photo :where(img) {
+    width: 100%;
+  }
 }
 @media (max-width: 980px) {
   .am-hero .am-wrap {

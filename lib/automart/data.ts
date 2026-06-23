@@ -201,13 +201,6 @@ export type PartCategoryData = {
 
 export const partCategories: PartCategoryData[] = [
   {
-    slug: 'bumpers',
-    name: 'Bumpers & Bumper Covers',
-    description: 'Front & rear bumper covers, reinforcements, absorbers, and complete assemblies.',
-    skuBadge: '1,200+ SKUs',
-    image: { src: '/automart/parts-cat/bumper.webp', alt: 'Bumpers and bumper covers' },
-  },
-  {
     slug: 'headlights',
     name: 'Headlights & Tail Lights',
     description: 'OEM-spec headlight assemblies, tail lamp units, and replacement lenses.',
@@ -226,35 +219,35 @@ export const partCategories: PartCategoryData[] = [
     name: 'Fog Lights',
     description: 'Direct-fit fog lamp assemblies and housings.',
     skuBadge: '350+ SKUs',
-    image: { src: '/automart/parts-cat/fog-light.webp', alt: 'Fog lights' },
+    image: { src: '/automart/parts-cat/fog-lights.webp', alt: 'Fog lights' },
   },
   {
     slug: 'hoods',
     name: 'Hoods & Panels',
     description: 'Replacement hoods, bonnet panels, cowl panels, and hood hinges.',
     skuBadge: '600+ SKUs',
-    image: { src: '/automart/parts-cat/front-bonnet.webp', alt: 'Hoods and front panels' },
+    image: { src: '/automart/parts-cat/hoods.webp', alt: 'Hoods and front panels' },
   },
   {
     slug: 'grilles',
     name: 'Grilles & Grille Guards',
     description: 'Upper & lower grilles, grille inserts, and overlay kits.',
     skuBadge: '500+ SKUs',
-    image: { src: '/automart/parts-cat/grill.webp', alt: 'Grilles and grille guards' },
+    image: { src: '/automart/parts-cat/grilles.webp', alt: 'Grilles and grille guards' },
   },
   {
     slug: 'mirrors',
     name: 'Mirrors',
     description: 'Power, manual, heated, and tow mirrors for cars and trucks.',
     skuBadge: '700+ SKUs',
-    image: { src: '/automart/parts-cat/side-mirror.webp', alt: 'Side mirrors' },
+    image: { src: '/automart/parts-cat/mirrors.webp', alt: 'Side mirrors' },
   },
   {
     slug: 'splash-guards',
     name: 'Splash Guards & Shields',
     description: 'Mud flaps, splash shields, fender liners, and wheel well covers.',
     skuBadge: '300+ SKUs',
-    image: { src: '/automart/parts-cat/splash-shield.webp', alt: 'Splash guards and shields' },
+    image: { src: '/automart/parts-cat/splash-guards.webp', alt: 'Splash guards and shields' },
   },
   {
     slug: 'ac-condensers',
@@ -262,13 +255,6 @@ export const partCategories: PartCategoryData[] = [
     description: 'Direct-fit A/C condensers and receiver-drier units.',
     skuBadge: '280+ SKUs',
     image: { src: '/automart/parts-cat/ac-condenser.webp', alt: 'A/C condensers' },
-  },
-  {
-    slug: 'fans',
-    name: 'Radiator & Condenser Fans',
-    description: 'Radiator condenser fan assemblies and individual fan motors.',
-    skuBadge: '200+ SKUs',
-    image: { src: '/automart/parts-cat/condenser-fan.webp', alt: 'Radiator and condenser fans' },
   },
   {
     slug: 'radiators',
@@ -282,7 +268,7 @@ export const partCategories: PartCategoryData[] = [
     name: 'Fenders',
     description: 'Front fenders, quarter panels, and inner fender liners for all makes.',
     skuBadge: '550+ SKUs',
-    image: { src: '/automart/parts-cat/handles.webp', alt: 'Fenders' },
+    image: { src: '/automart/parts-cat/fenders.webp', alt: 'Fenders' },
   },
   {
     slug: 'doors',

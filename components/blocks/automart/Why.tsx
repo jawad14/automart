@@ -1,6 +1,9 @@
+import Link from 'next/link';
 import { siteConfig } from '@/config/site.config';
 import { btnClass } from '@/lib/automart/button';
 import { Reveal } from './Reveal';
+
+const isInternalRoute = (href: string) => href.startsWith('/') && !href.startsWith('//');
 
 export function Why() {
   const { why } = siteConfig.content;
@@ -13,11 +16,18 @@ export function Why() {
             <h2>{why.headline}</h2>
             <p className="am-wlede">{why.lede}</p>
             <div className="am-wcta">
-              {why.ctas.map((cta) => (
-                <a key={cta.label} className={btnClass(cta.variant, 'lg')} href={cta.href}>
-                  {cta.label}
-                </a>
-              ))}
+              {why.ctas.map((cta) => {
+                const className = btnClass(cta.variant, 'lg');
+                return isInternalRoute(cta.href) ? (
+                  <Link key={cta.label} className={className} href={cta.href}>
+                    {cta.label}
+                  </Link>
+                ) : (
+                  <a key={cta.label} className={className} href={cta.href}>
+                    {cta.label}
+                  </a>
+                );
+              })}
             </div>
           </div>
         </Reveal>

@@ -42,9 +42,9 @@ export function Header() {
           </Link>
           <nav className="am-nav">
             {siteConfig.nav.map((item) => (
-              <a key={item.label} href={item.href}>
+              <Link key={item.label} href={item.href}>
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
           <div className="am-header-actions">
@@ -87,17 +87,17 @@ export function Header() {
             </button>
           </div>
           {siteConfig.nav.map((item) => (
-            <a key={item.label} className="am-dlink" href={item.href} onClick={close}>
+            <Link key={item.label} className="am-dlink" href={item.href} onClick={close}>
               {item.label}
-            </a>
+            </Link>
           ))}
           <div className="am-drawer-cta">
             <a className="am-btn am-btn-red am-btn-lg" href={siteConfig.phoneHref} onClick={close}>
               Call {siteConfig.phone}
             </a>
-            <a className="am-btn am-btn-ghost am-btn-lg" href="#quote" onClick={close}>
+            <Link className="am-btn am-btn-ghost am-btn-lg" href="/#quote" onClick={close}>
               Request a quote
-            </a>
+            </Link>
           </div>
         </div>
       </div>

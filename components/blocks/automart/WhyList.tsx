@@ -1,5 +1,8 @@
+import Link from 'next/link';
 import { btnClass } from '@/lib/automart/button';
 import type { ButtonVariant } from '@/config/site.config';
+
+const isInternalRoute = (href: string) => href.startsWith('/') && !href.startsWith('//');
 
 type Cta = { label: string; href: string; variant: ButtonVariant };
 type Reason = { n: number; title: string; body: string };
@@ -21,11 +24,18 @@ export function WhyList({ eyebrow, headline, lede, ctas, reasons }: Props) {
           <h2>{headline}</h2>
           <p className="am-wlede">{lede}</p>
           <div className="am-wcta">
-            {ctas.map((cta) => (
-              <a key={cta.label} className={btnClass(cta.variant, 'lg')} href={cta.href}>
-                {cta.label}
-              </a>
-            ))}
+            {ctas.map((cta) => {
+              const className = btnClass(cta.variant, 'lg');
+              return isInternalRoute(cta.href) ? (
+                <Link key={cta.label} className={className} href={cta.href}>
+                  {cta.label}
+                </Link>
+              ) : (
+                <a key={cta.label} className={className} href={cta.href}>
+                  {cta.label}
+                </a>
+              );
+            })}
           </div>
         </div>
         <div className="am-why-list">

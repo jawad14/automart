@@ -1,8 +1,11 @@
+import Link from 'next/link';
 import { siteConfig } from '@/config/site.config';
 import { btnClass } from '@/lib/automart/button';
 import { categories } from '@/lib/automart/data';
 import { CategoryIcon } from '@/lib/automart/icons';
 import { Reveal } from './Reveal';
+
+const isInternalRoute = (href: string) => href.startsWith('/') && !href.startsWith('//');
 
 const Arrow = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -38,11 +41,18 @@ export function Categories() {
           ))}
         </div>
         <div className="am-cat-foot">
-          {categoriesHead.ctas.map((cta) => (
-            <a key={cta.label} className={btnClass(cta.variant, 'lg')} href={cta.href}>
-              {cta.label}
-            </a>
-          ))}
+          {categoriesHead.ctas.map((cta) => {
+            const className = btnClass(cta.variant, 'lg');
+            return isInternalRoute(cta.href) ? (
+              <Link key={cta.label} className={className} href={cta.href}>
+                {cta.label}
+              </Link>
+            ) : (
+              <a key={cta.label} className={className} href={cta.href}>
+                {cta.label}
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>

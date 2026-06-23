@@ -248,10 +248,10 @@ export default function DeliveryPage() {
         headlineAccent="Delivery"
         lede="Our own branded delivery fleet runs daily routes across the Chicago metro area and into surrounding states. Same-day delivery to local shops — no third-party carriers, no excuses."
         image={{
-          src: '/automart/delivery-truck.webp',
+          src: '/automart/delivery-hero.webp',
           alt: 'Automart delivery truck',
-          width: 835,
-          height: 520,
+          width: 1672,
+          height: 941,
         }}
       />
       <DeliveryStats items={stats} />

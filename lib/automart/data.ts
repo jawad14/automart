@@ -125,11 +125,11 @@ export type VehicleType = {
 
 export const vehicleTypes: VehicleType[] = [
   { key: 'sedan', name: 'Sedan', count: '4,200+ parts' },
-  { key: 'suv', name: 'SUV / Crossover', count: '6,800+ parts' },
+  { key: 'suv', name: 'SUV', count: '6,800+ parts' },
   { key: 'truck', name: 'Pickup Truck', count: '9,400+ parts' },
   { key: 'hatch', name: 'Hatchback', count: '2,100+ parts' },
   { key: 'coupe', name: 'Coupe', count: '1,300+ parts' },
-  { key: 'van', name: 'Van / Cargo', count: '1,900+ parts' },
+  { key: 'van', name: 'Cargo Van', count: '1,900+ parts' },
 ];
 
 export type Review = {

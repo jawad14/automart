@@ -1196,7 +1196,7 @@ body:has(.am-page) {
   transform: translateY(-2px);
 }
 .am-vt .am-vti {
-  height: 46px;
+  height: 60px;
   display: grid;
   place-items: center;
   color: var(--am-black);
@@ -1208,6 +1208,16 @@ body:has(.am-page) {
 .am-vt .am-vti svg {
   width: 54px;
   height: 34px;
+}
+.am-vt .am-vti .am-vt-img {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+  filter: brightness(0);
+  transition: 0.2s;
+}
+.am-vt:hover .am-vti .am-vt-img {
+  filter: brightness(0) invert(28%) sepia(96%) saturate(3000%) hue-rotate(348deg);
 }
 .am-vt b {
   font-family: var(--am-display);

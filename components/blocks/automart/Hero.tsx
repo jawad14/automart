@@ -73,6 +73,7 @@ export function Hero() {
               preload="auto"
               poster="/automart/hero-poster.webp"
             >
+              <source src="/automart/hero-video-alpha.mp4" type='video/mp4; codecs="hvc1"' />
               <source src="/automart/hero-video.webm" type="video/webm" />
             </video>
           </div>

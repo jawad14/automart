@@ -2,6 +2,7 @@
 
 import { useState, type ChangeEvent, type FormEvent } from 'react';
 import { siteConfig } from '@/config/site.config';
+import { getRecaptchaToken } from '@/lib/automart/recaptcha';
 import { emitToast } from '@/lib/automart/toast';
 import { Reveal } from './Reveal';
 
@@ -37,6 +38,8 @@ export function Quote() {
   const [values, setValues] = useState<FormState>(initial);
   const [errors, setErrors] = useState<Record<string, boolean>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [hp, setHp] = useState('');
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -50,8 +53,9 @@ export function Quote() {
     }
   };
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (sending) return;
     const next: Record<string, boolean> = {};
     for (const key of requiredKeys) {
       if (!values[key].trim()) next[key] = true;
@@ -62,7 +66,27 @@ export function Quote() {
       emitToast('Please fill in the highlighted fields.');
       return;
     }
-    setSubmitted(true);
+
+    setSending(true);
+    try {
+      const recaptchaToken = await getRecaptchaToken('quote');
+      const res = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...values, website: hp, recaptchaToken }),
+      });
+      if (!res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { error?: string };
+        throw new Error(data.error || 'Something went wrong.');
+      }
+      setSubmitted(true);
+    } catch (err) {
+      emitToast(
+        err instanceof Error ? err.message : 'Could not send your request. Please try again.',
+      );
+    } finally {
+      setSending(false);
+    }
   };
 
   const firstName = values.name.trim().split(' ')[0];
@@ -195,8 +219,18 @@ export function Quote() {
                   className={errors.parts ? 'am-err' : ''}
                 />
               </div>
-              <button className="am-btn am-btn-red am-btn-lg" type="submit">
-                Send quote request
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                value={hp}
+                onChange={(e) => setHp(e.target.value)}
+                style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+              />
+              <button className="am-btn am-btn-red am-btn-lg" type="submit" disabled={sending}>
+                {sending ? 'Sending…' : 'Send quote request'}
               </button>
               <p className="am-fnote">{quote.formNote}</p>
             </form>

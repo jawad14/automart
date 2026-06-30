@@ -2,6 +2,7 @@
 
 import { useState, type ChangeEvent, type FormEvent } from 'react';
 import { siteConfig } from '@/config/site.config';
+import { getRecaptchaToken } from '@/lib/automart/recaptcha';
 import { emitToast } from '@/lib/automart/toast';
 
 type FormState = {
@@ -33,6 +34,8 @@ export function Register() {
   const [values, setValues] = useState<FormState>(initial);
   const [errors, setErrors] = useState<Record<string, boolean>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [hp, setHp] = useState('');
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -46,8 +49,9 @@ export function Register() {
     }
   };
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (sending) return;
     const next: Record<string, boolean> = {};
     for (const k of required) if (!values[k].trim()) next[k] = true;
     if (values.email && !emailRe.test(values.email)) next.email = true;
@@ -56,8 +60,28 @@ export function Register() {
       emitToast('Fill in the required fields so we can set up the account.');
       return;
     }
-    setSubmitted(true);
-    emitToast('Application received — a specialist will reach out within one business day.');
+
+    setSending(true);
+    try {
+      const recaptchaToken = await getRecaptchaToken('register');
+      const res = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...values, website: hp, recaptchaToken }),
+      });
+      if (!res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { error?: string };
+        throw new Error(data.error || 'Something went wrong.');
+      }
+      setSubmitted(true);
+      emitToast('Application received — a specialist will reach out within one business day.');
+    } catch (err) {
+      emitToast(
+        err instanceof Error ? err.message : 'Could not submit your application. Please try again.',
+      );
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -195,8 +219,18 @@ export function Register() {
               />
             </div>
 
-            <button type="submit" className="am-btn am-btn-red am-btn-lg">
-              Submit application
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              value={hp}
+              onChange={(e) => setHp(e.target.value)}
+              style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+            />
+            <button type="submit" className="am-btn am-btn-red am-btn-lg" disabled={sending}>
+              {sending ? 'Submitting…' : 'Submit application'}
             </button>
             <p className="am-fnote">
               We’ll only use your info to set up the account. No spam, ever.

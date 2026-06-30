@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, JetBrains_Mono, Jost } from 'next/font/google';
+import { ChatBot } from '@/components/blocks/automart/ChatBot';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { defaultMetadata } from '@/config/site.config';
 import './globals.css';
@@ -51,6 +52,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <ChatBot />
         </ThemeProvider>
       </body>
     </html>
